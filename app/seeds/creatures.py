@@ -114,7 +114,7 @@ scp_173 = Creature(
     image="https://cdna.artstation.com/p/marketplace/presentation_assets/001/785/880/large/file.jpg",
     category="SCP",
     origin="SCP Foundation",
-    description="Moved to Site-19 1993. Origin is as of yet unknown. It is constructed from concrete and rebar with traces of Krylon brand spray paint. SCP-173 is animate and extremely hostile. The object cannot move while within a direct line of sight. Line of sight must not be broken at any time with SCP-173. Personnel assigned to enter container are instructed to alert one another before blinking. Object is reported to attack by snapping the neck at the base of the skull, or by strangulation. In the event of an attack, personnel are to observe Class 4 hazardous object containment procedures. Personnel report sounds of scraping stone originating from within the container when no one is present inside. This is considered normal, and any change in this behaviour should be reported to the acting HMCL supervisor on duty.",
+    description="SCP-173 was relocated to Site-19 in 1993, with its origin unknown. Constructed from concrete and rebar, it has traces of Krylon spray paint. The entity is animate and highly hostile, capable of movement only when not in direct line of sight. Personnel must maintain eye contact and alert each other before blinking. SCP-173 attacks by snapping necks or strangulation. In the event of an attack, staff should follow Class 4 hazardous containment procedures.",
 )
 
 doppelganger = Creature(
@@ -189,7 +189,7 @@ scp_682 = Creature(
     image="https://i.kym-cdn.com/photos/images/original/001/893/861/f03.jpg",
     category="SCP",
     origin="SCP Foundation",
-    description="SCP-682 is a large, vaguely reptile-like creature of unknown origin. It appears to be extremely intelligent, and was observed to engage in complex communication with SCP-079 during their limited time of exposure. SCP-682 appears to have a hatred of all life, which has been expressed in several interviews during containment. SCP-682 has always been observed to have extremely high strength, speed, and reflexes, though exact levels vary with its form. SCP-682's physical body grows and changes very quickly, growing or decreasing in size as it consumes or sheds material. SCP-682 gains energy from anything it ingests, organic or inorganic. Digestion seems to be aided by a set of filtering gills inside of SCP-682 nostrils, which are able to remove usable matter from any liquid solution, enabling it to constantly regenerate from the acid it is contained in. SCP-682s regenerative capabilities and resilience are staggering, and SCP-682 has been seen moving and speaking with its body 87% destroyed or rotted.",
+    description="SCP-682 is a large, vaguely reptile-like creature of unknown origin. It appears to be extremely intelligent, and was observed to engage in complex communication with SCP-079 during their limited time of exposure. SCP-682 appears to have a hatred of all life, which has been expressed in several interviews during containment. SCP-682 has always been observed to have extremely high strength, speed, and reflexes, though exact levels vary with its form.",
     saves=[saul],
 )
 
