@@ -1,4 +1,5 @@
 from datetime import datetime
+from .tables import saved_creatures_table
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
@@ -20,7 +21,11 @@ class User(db.Model, UserMixin):
     
     #! Relationships
     creatures = db.relationship("Creature", back_populates="user", cascade="all, delete")
-    # lore = db.relationship("Lore", back_populates="user", cascade="all, delete")
+    lore = db.relationship("Lore", back_populates="user", cascade="all, delete")
+    
+    #! Many to Many
+    saved = db.relationship("Creature", secondary=saved_creatures_table, back_populates="saves")
+
 
     @property
     def password(self):
@@ -46,5 +51,6 @@ class User(db.Model, UserMixin):
     def to_dict(self):
         return {
             **self.to_dict_basic(),
-            "creatures": [creature.to_dict_basic() for creature in self.creatures]
+            "creatures": [creature.to_dict_basic() for creature in self.creatures],
+            "saved" : [saved_creature.to_dict_basic() for saved_creature in self.saved]
         }
