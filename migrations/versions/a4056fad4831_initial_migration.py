@@ -1,8 +1,8 @@
-"""empty message
+"""Initial Migration
 
-Revision ID: 8a5b2ad5b557
+Revision ID: a4056fad4831
 Revises: 
-Create Date: 2024-10-02 13:57:41.101891
+Create Date: 2024-10-02 14:26:54.758553
 
 """
 from alembic import op
@@ -13,7 +13,7 @@ SCHEMA = os.environ.get("SCHEMA")
 
 
 # revision identifiers, used by Alembic.
-revision = '8a5b2ad5b557'
+revision = 'a4056fad4831'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -37,6 +37,7 @@ def upgrade():
     if environment == "production":
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
 
+
     op.create_table('creatures',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
@@ -54,6 +55,7 @@ def upgrade():
 
     if environment == "production":
         op.execute(f"ALTER TABLE creatures SET SCHEMA {SCHEMA};")
+
 
     op.create_table('lore',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -80,7 +82,7 @@ def upgrade():
     )
 
     if environment == "production":
-        op.execute(f"ALTER TABLE saved_creatures SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE saved_creatures SET SCHEMA {SCHEMA};")   
     # ### end Alembic commands ###
 
 
