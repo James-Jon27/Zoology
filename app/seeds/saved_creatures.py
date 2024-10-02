@@ -16,7 +16,7 @@ def seed_saved_creatures():
     ]
 
     for user_id, creature_id in associations:
-        db.session.excute(
+        db.session.execute(
             saved_creatures_table.insert().values(user_id=user_id, creature_id=creature_id)
         )
     db.session.commit()
