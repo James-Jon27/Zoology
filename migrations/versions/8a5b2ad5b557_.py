@@ -7,6 +7,9 @@ Create Date: 2024-10-02 13:57:41.101891
 """
 from alembic import op
 import sqlalchemy as sa
+import os
+environment = os.getenv("FLASK_ENV")
+SCHEMA = os.environ.get("SCHEMA")
 
 
 # revision identifiers, used by Alembic.
@@ -30,6 +33,10 @@ def upgrade():
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
     )
+
+    if environment == "production":
+        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+
     op.create_table('creatures',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
@@ -44,6 +51,10 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('name')
     )
+
+    if environment == "production":
+        op.execute(f"ALTER TABLE creatures SET SCHEMA {SCHEMA};")
+
     op.create_table('lore',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
@@ -56,6 +67,10 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+
+    if environment == "production":
+        op.execute(f"ALTER TABLE lore SET SCHEMA {SCHEMA};")
+
     op.create_table('saved_creatures',
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('creature_id', sa.Integer(), nullable=False),
@@ -63,6 +78,9 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('user_id', 'creature_id')
     )
+
+    if environment == "production":
+        op.execute(f"ALTER TABLE saved_creatures SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
 
