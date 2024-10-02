@@ -1,19 +1,20 @@
-"""Initial Migration
+"""empty message
 
-Revision ID: a4056fad4831
+Revision ID: 24810705a0fd
 Revises: 
-Create Date: 2024-10-02 14:26:54.758553
+Create Date: 2024-10-02 14:59:55.937458
 
 """
 from alembic import op
 import sqlalchemy as sa
 import os
+
 environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
 
 # revision identifiers, used by Alembic.
-revision = 'a4056fad4831'
+revision = '24810705a0fd'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -37,7 +38,6 @@ def upgrade():
     if environment == "production":
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
 
-
     op.create_table('creatures',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
@@ -55,7 +55,6 @@ def upgrade():
 
     if environment == "production":
         op.execute(f"ALTER TABLE creatures SET SCHEMA {SCHEMA};")
-
 
     op.create_table('lore',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -82,7 +81,7 @@ def upgrade():
     )
 
     if environment == "production":
-        op.execute(f"ALTER TABLE saved_creatures SET SCHEMA {SCHEMA};")   
+        op.execute(f"ALTER TABLE saved_creatures SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
 
