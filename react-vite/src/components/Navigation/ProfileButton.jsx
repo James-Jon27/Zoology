@@ -47,13 +47,13 @@ function ProfileButton() {
 			{showMenu && (
 				<ul className={"profile-dropdown"} ref={ulRef}>
 					{user ? (
-						<>
-							<li>{user.username}</li>
-							<li>{user.email}</li>
-							<li>
-								<button onClick={logout}>Log Out</button>
+						<div className="userIn">
+							<li className="profModal">{user.username}</li>
+							<li className="profModal">{user.email}</li>
+							<li className="profModal">
+								<button style={{background:"none", border: "solid 1px white", color: "white", fontWeight:"bold",cursor:"pointer"}} onClick={logout}>Log Out</button>
 							</li>
-						</>
+						</div>
 					) : (
 						<div className="userIn">
 							<li className="profModal" style={{ cursor: "pointer" }}>
