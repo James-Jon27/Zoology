@@ -13,7 +13,7 @@ class Creature(db.Model):
     image = db.Column(db.String(500), nullable=False)
     name = db.Column(db.String, nullable=False, unique=True)
     category = db.Column(db.String,nullable=False)
-    description = db.Column(db.String(350), nullable=False)
+    description = db.Column(db.String(1000), nullable=False)
     origin = db.Column(db.String)
     created_at = db.Column(db.DateTime, default=datetime.now)
     updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)
