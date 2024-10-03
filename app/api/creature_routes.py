@@ -1,8 +1,10 @@
 from flask import Blueprint, jsonify, request
 from flask_login import current_user, login_required
-from app.api.boto_file import get_unique_filename, upload_file_to_s3
+from app.api.boto_file import get_unique_filename, remove_file_from_s3, upload_file_to_s3
 from app.forms.creature_form import CreatureForm
-from app.models import Creature, db
+from app.forms.creature_update_form import CreatureUpdateForm
+from app.forms.marble_form import MarbleForm
+from app.models import Creature, Lore, db, user
 
 creature_routes = Blueprint("creatures", __name__)
 
@@ -69,5 +71,124 @@ def creature(id):
     """
     Query for getting a specific creature
     """
-    creature = Creature.get(id)
+    creature = Creature.query.get(id)
+    if not creature:
+        return {"errors": "Creature Not Found"}, 404
+    
+    return creature.to_dict()
+
+
+@creature_routes.route("/<int:id>", methods=["PUT"])
+@login_required
+def update_creature(id):
+    """
+    Query for updating a specific creature
+    """
+    creature = Creature.query.get(id)
+    form = CreatureUpdateForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+
+    if not creature:
+        return {"errors": "Creature Not Found"}, 404
+
+    if creature.user_id != current_user.id:
+        return {"errors": "This is not your Creature"}, 500
+
+    if form.validate_on_submit():
+        creature.name=form.data['name']
+        creature.category = (form.data["category"])
+        creature.description = (form.data["description"])
+        creature.origin = form.data["origin"]
+
+        db.session.commit()
+        return creature.to_dict()
+
+    return format_errors(form.errors)
+
+
+@creature_routes.route("/<int:id>", methods=["DELETE"])
+@login_required
+def delete_creature(id):
+    """
+    Query for deleting a specific creature
+    """
+    creature = Creature.query.get(id)
+
+    if not creature:
+        return {"errors": "Creature Not Found"}, 404
+
+    if creature.user_id != current_user.id:
+        return {"errors": "This is not your Creature"}, 500
+
+    remove_file_from_s3(creature.image)
+    db.session.delete(creature)
+    db.session.commit()
+
+    return {"message" : "Deleted"}
+
+
+@creature_routes.route("/<int:id>/lore", methods=["POST"])
+@login_required
+def new_lore(id):
+    """
+    Query for add lore to a specific creature
+    """
+    creature = Creature.query.get(id)
+
+    if not creature:
+        return {"errors": "Creature Not Found"}, 404
+
+    form = MarbleForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+
+    if form.validate_on_submit():
+        new_marble = Lore(
+            title=form.data['title'].title(),
+            story=form.data['story'],
+            creature=creature,
+            user=current_user
+        )
+
+        db.session.add(new_marble)
+        db.session.commit()
+        return new_marble.to_dict_basic()
+
+    return format_errors(form.errors)
+
+
+@creature_routes.route("/<int:id>/save", methods=["POST"])
+@login_required
+def save_creature(id):
+    """
+    Query for deleting a specific creature
+    """
+    creature = Creature.query.get(id)
+
+    if not creature:
+        return {"errors": "Creature Not Found"}, 404
+
+    if current_user in creature.saves:
+        return {"errors": "Already Saved Creature"}, 500
+
+    creature.saves.append(current_user)
+    db.session.commit()
+    return creature.to_dict()
+
+
+@creature_routes.route("/<int:id>/save", methods=["DELETE"])
+@login_required
+def delete_save_creature(id):
+    """
+    Query for deleting a specific creature
+    """
+    creature = Creature.query.get(id)
+
+    if not creature:
+        return {"errors": "Creature Not Found"}, 404
+
+    if current_user not in creature.saves:
+        return {"errors": "Creature Not Saved"}, 500
+
+    creature.saves.remove(current_user)
+    db.session.commit()
     return creature.to_dict()
