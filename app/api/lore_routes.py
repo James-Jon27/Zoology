@@ -19,6 +19,9 @@ def format_errors(validation_errors):
 
 @lore_routes.route("/<int:id>")
 def marble(id):
+    """
+    Query to get a specific marble
+    """
     marble = Lore.query.get(id)
 
     if not marble:
@@ -30,6 +33,9 @@ def marble(id):
 @lore_routes.route("/<int:id>", methods=["PUT"])
 @login_required
 def update_marble(id):
+    """
+    Query to update a specific marble
+    """
     marble = Lore.query.get(id)
 
     if not marble:
@@ -54,6 +60,9 @@ def update_marble(id):
 @lore_routes.route("/<int:id>", methods=["DELETE"])
 @login_required
 def delete_mable(id):
+    """
+    Query to delete a specific marble
+    """
     marble = Lore.query.get(id)
 
     if not marble:
