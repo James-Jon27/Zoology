@@ -19,8 +19,17 @@ li {
   font-size: 1.5rem;
 }
 
+.userIn {
+  display: flex;
+  padding: 10px;
+  flex-direction: column;
+  align-items: center;
+  color:  white;
+  background: black;
+}
+
 .profile-dropdown {
   position: absolute;
-  top: 107px;
-  right: 5px;
+  top: 85px;
+  right: 0;
 }

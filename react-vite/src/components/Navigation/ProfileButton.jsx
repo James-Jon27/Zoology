@@ -55,7 +55,7 @@ function ProfileButton() {
 							</li>
 						</>
 					) : (
-						<>
+						<div className="userIn">
 							<li className="profModal" style={{ cursor: "pointer" }}>
 								<OpenModalMenuItem
 									itemText="Log In"
@@ -70,7 +70,7 @@ function ProfileButton() {
 									modalComponent={<SignupFormModal />}
 								/>
 							</li>
-						</>
+						</div>
 					)}
 				</ul>
 			)}
