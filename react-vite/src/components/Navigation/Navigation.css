@@ -1,3 +1,26 @@
+html,
+body {
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.navbar {
+  align-items: center;
+  background: linear-gradient(to bottom, rgb(255, 255, 255), rgb(59, 59, 59));
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.profModal {
+  font-weight: bolder;
+  font-size: 1.5rem;
+}
+
 .profile-dropdown {
   position: absolute;
+  top: 107px;
+  right: 5px;
 }

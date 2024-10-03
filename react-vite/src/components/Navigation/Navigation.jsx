@@ -4,16 +4,19 @@ import "./Navigation.css";
 
 function Navigation() {
   return (
-    <ul>
-      <li>
-        <NavLink to="/">Home</NavLink>
-      </li>
-
-      <li>
-        <ProfileButton />
-      </li>
-    </ul>
-  );
+		<ul
+			className="navbar" style={{ display: "flex", justifyContent: "space-between", listStyle: "none", padding: "0", margin: "0"}}>
+			<li>
+				<NavLink to="/">
+					<img src="./zoology-removebg-preview.png" style={{ color: "white", width: "100px", height: "100px" }} />
+				</NavLink>
+			</li>
+      <h1 style={{margin: "0", cursor:"default", fontSize: "3.5rem"}}>Zoology</h1>
+			<li>
+				<ProfileButton />
+			</li>
+		</ul>
+	);
 }
 
 export default Navigation;
