@@ -28,7 +28,7 @@ def creatures():
     return {'creatures': [creature.to_dict_basic() for creature in  creatures]}
 
 
-@creature_routes.route("/", methods=["POST"])
+@creature_routes.route("", methods=["POST"])
 @login_required
 def make_creature():
     form = CreatureForm()
@@ -46,11 +46,18 @@ def make_creature():
             # so you send back that error message (and you printed it above)
             return format_errors(form.errors), 500
 
-        image = upload["url"]
-        new_creature = Creature(image=image)
-        form.populate_obj(new_creature)
+        url = upload["url"]
+        new_creature = Creature(
+            image=url,
+            user=current_user,
+            name=form.data['name'],
+            category=form.data['category'],
+            description=form.data['description'],
+            origin=form.data['origin']
+            )
         db.session.add(new_creature)
         db.session.commit()
+        return new_creature.to_dict()
 
     if form.errors:
         return {"errors": format_errors(form.errors)}

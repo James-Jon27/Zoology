@@ -15,7 +15,7 @@ def creature_exists(form, field):
 class CreatureForm(FlaskForm):
     name = StringField("name", validators=[DataRequired(), creature_exists])
     category = StringField("category", validators=[DataRequired()])
-    description = StringField('description', validators=[DataRequired(), Length(350)])
+    description = StringField('description', validators=[DataRequired(), Length(0, 350)])
     origin =StringField("origin")
     image = FileField(
         "Image File", validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))]
