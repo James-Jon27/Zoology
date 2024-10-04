@@ -1,0 +1,48 @@
+.creatureInfo {
+	display: flex;
+	justify-content: center;
+}
+
+.creatureImage {
+	display: flex;
+	align-items: center;
+}
+
+.creatureImage > img {
+	height: 450px;
+	clip-path: xywh(0 1px 100% 100% round 15% 0);
+	border: solid 5px #cc7e00;
+}
+
+.creatureData {
+	width: 325px;
+	height: 450px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	text-align: center;
+	margin: 15px;
+	border: solid 5px #cc7e00;
+}
+
+.desc {
+	overflow-y: scroll;
+}
+
+.desc::-webkit-scrollbar {
+	display: none;
+}
+
+.creatureLore {
+	display: flex;
+	justify-content: center;
+}
+
+.creatureLore > div > button {
+	color: #ffc466;
+}
+
+.creatureLore > div > button:hover {
+	text-decoration: underline;
+	color: #995e00;
+}

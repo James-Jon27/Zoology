@@ -52,5 +52,6 @@ class User(db.Model, UserMixin):
         return {
             **self.to_dict_basic(),
             "creatures": [creature.to_dict_basic() for creature in self.creatures],
-            "saved" : [saved_creature.to_dict_basic() for saved_creature in self.saved]
+            "saved" : [saved_creature.to_dict_basic() for saved_creature in self.saved],
+            "lore" : [marble.to_dict_basic() for marble in self.lore],
         }

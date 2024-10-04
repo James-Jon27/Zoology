@@ -1,0 +1,43 @@
+/* background-color: rgb(255, 163, 50); */
+
+.creature {
+	display: flex;
+    gap: 5px;
+	justify-content: space-between;
+	text-decoration: none;
+	color: black;
+	margin: 20px;
+	border: 2px solid #995e00;
+	background-color: rgb(255, 163, 50);
+	border-radius: 50px;
+	box-shadow: 5px 15px 15px rgb(0, 0, 0);
+}
+
+.cImage {
+    margin: 20px;
+	display: flex;
+	width: 125px;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+}
+
+.cImage > img {
+	height: 125px;
+    width: auto;
+}
+
+.cDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 750px;
+	font-size: larger;
+}
+
+.cWhereAbouts {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

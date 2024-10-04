@@ -27,7 +27,7 @@ def creatures():
     """
 
     creatures = Creature.query.all()
-    return {'creatures': [creature.to_dict_basic() for creature in  creatures]}
+    return {'creatures': {creature.id : creature.to_dict_basic() for creature in  creatures}}
 
 
 @creature_routes.route("", methods=["POST"])

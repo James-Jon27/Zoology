@@ -1,36 +1,37 @@
 html,
 body {
-  margin: 0;
-  /* background: rgb(59, 59, 59); */
+	margin: 0;
+	background-color: #66A1FF;
 }
 
 li {
-  list-style: none;
+	list-style: none;
 }
 
 .navbar {
-  align-items: center;
-  background: linear-gradient(to bottom, rgb(255, 255, 255), rgb(59, 59, 59));
-  margin-left: 50px;
-  margin-right: 50px;
+	align-items: center;
+	background: linear-gradient(to bottom, #ffffff, #66A1FF);
+	margin-left: 50px;
+	margin-right: 50px;
 }
 
 .profModal {
-  font-weight: bolder;
-  font-size: 1.5rem;
+	font-weight: bolder;
+	font-size: 1.5rem;
 }
 
 .userIn {
-  display: flex;
-  padding: 10px;
-  flex-direction: column;
-  align-items: center;
-  color:  white;
-  background: black;
+	display: flex;
+	padding: 10px;
+	flex-direction: column;
+	align-items: center;
+	color: white;
+	background: #001433;
 }
 
 .profile-dropdown {
-  position: absolute;
-  top: 85px;
-  right: 0;
+	position: absolute;
+	top: 85px;
+	right: 0;
 }
+
