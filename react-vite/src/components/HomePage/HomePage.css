@@ -16,14 +16,16 @@
 .cImage {
     margin: 20px;
 	display: flex;
-	width: 125px;
-	justify-content: center;
-	align-items: center;
+	width: 200px;
+	min-width: 125px;
+	align-self: center;
 	overflow: hidden;
+	justify-content: center;
 }
 
 .cImage > img {
-	height: 125px;
+	border: solid 5px #001433;
+	height: 175px;
     width: auto;
 }
 
@@ -31,7 +33,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    max-width: 750px;
+    max-width: 1250px;
 	font-size: larger;
 }
 

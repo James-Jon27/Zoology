@@ -49,7 +49,15 @@ export default function CreaturePage() {
 			</div>
 			<div className="creatureLore">
 				{creature.lore.length ? (
-					<div></div>
+					<div>
+                        {creature.lore.map(marble => {
+                            return (
+                                <div key={marble.id}>
+                                    <h3>{marble.title}</h3>
+                                </div>
+                            )
+                        })}
+                    </div>
 				) : (
 					<div style={{ display: "flex", flexDirection: "column" }}>
 						<h1 style={{ textAlign: "center", fontSize: "3rem" }}>No Lore Posted...</h1>

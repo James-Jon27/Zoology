@@ -33,26 +33,23 @@ export default function HomePage({ category }) {
 		<div>
 			{category ? (
 				<div>
+					<h1 style={{ textAlign: "center", fontSize: "3rem" }}>{category} Creatures</h1>
 					{creatures &&
 						creatures
 							.filter((creature) => creature.category === category)
 							.map((creature) => {
 								return (
 									<NavLink to={`/creature/${creature.id}`} key={creature.id} className="creature">
-										<div>
-											<img
-												className="cImage"
-												src={creature.image}
-												alt={`Image of ${creature.name}`}
-											/>
+										<div className="cImage">
+											<img src={creature.image} alt={`Image of ${creature.name}`} />
 										</div>
 										<div className="cDetails">
 											<h1>{creature.name}</h1>
-											<p>{creature.description}</p>
+											<p style={{ fontSize: "1.7rem" }}>{creature.description}</p>
 										</div>
 										<div className="cWhereAbouts">
-											<p>{creature.category}</p>
-											<p>{creature.origin}</p>
+											<h3>{creature.category}</h3>
+											<h3>{creature.origin}</h3>
 										</div>
 									</NavLink>
 								);
@@ -60,6 +57,9 @@ export default function HomePage({ category }) {
 				</div>
 			) : (
 				<div>
+					<h1 style={{ textAlign: "center", fontSize: "3rem" }}>
+						All Creatures
+					</h1>
 					{creatures &&
 						creatures.map((creature) => {
 							return (
@@ -69,7 +69,7 @@ export default function HomePage({ category }) {
 									</div>
 									<div className="cDetails">
 										<h1>{creature.name}</h1>
-										<p>{creature.description}</p>
+										<p style={{ fontSize: "1.7rem" }}>{creature.description}</p>
 									</div>
 									<div className="cWhereAbouts">
 										<h3>{creature.category}</h3>

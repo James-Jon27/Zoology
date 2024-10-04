@@ -41,7 +41,7 @@ function ProfileButton() {
 
 	return (
 		<>
-			<button style={{ background: "none", border: "none" }} onClick={toggleMenu}>
+			<button style={{ background: "none", border: "none", width: "100px" }} onClick={toggleMenu}>
 				<FaUserCircle style={{ height: "40px", width: "40px", cursor: "pointer" }} />
 			</button>
 			{showMenu && (
