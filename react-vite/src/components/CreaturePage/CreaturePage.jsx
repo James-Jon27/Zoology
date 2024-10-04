@@ -52,8 +52,9 @@ export default function CreaturePage() {
 					<div>
                         {creature.lore.map(marble => {
                             return (
-                                <div key={marble.id}>
+                                <div key={marble.id} className="marble">
                                     <h3>{marble.title}</h3>
+									<p>{marble.story}</p>
                                 </div>
                             )
                         })}
