@@ -1,7 +1,7 @@
 html,
 body {
 	margin: 0;
-	background-color: #66A1FF;
+	background-color: #0062FF;
 }
 
 li {
@@ -10,7 +10,7 @@ li {
 
 .navbar {
 	align-items: center;
-	background: linear-gradient(to bottom, #ffffff, #66A1FF);
+	background: linear-gradient(to bottom, #ffffff, #0062FF);
 	margin-left: 50px;
 	margin-right: 50px;
 }
@@ -21,7 +21,7 @@ li {
 }
 
 .userIn {
-	width: 100px;
+	width: fit-content;
 	display: flex;
 	padding: 10px;
 	flex-direction: column;
@@ -33,6 +33,6 @@ li {
 .profile-dropdown {
 	position: absolute;
 	top: 85px;
-	right: 0;
+	right: 5px;
 }
 

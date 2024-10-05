@@ -43,3 +43,7 @@
     flex-direction: column;
     justify-content: center;
 }
+
+#liner::-webkit-scrollbar {
+	display: none;
+}

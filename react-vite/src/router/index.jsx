@@ -12,6 +12,10 @@ export const router = createBrowserRouter([
 				element: <HomePage />,
 			},
 			{
+				path: "/:category",
+				element: <HomePage />
+			},
+			{
 				path: "/creature/:id",
 				element: <CreaturePage />
 			},

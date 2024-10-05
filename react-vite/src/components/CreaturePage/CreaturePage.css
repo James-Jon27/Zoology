@@ -15,6 +15,7 @@
 }
 
 .creatureData {
+	color: #001433;
 	width: 325px;
 	height: 450px;
 	display: flex;
@@ -36,13 +37,4 @@
 .creatureLore {
 	display: flex;
 	justify-content: center;
-}
-
-.creatureLore > div > button {
-	color: #ffc466;
-}
-
-.creatureLore > div > button:hover {
-	text-decoration: underline;
-	color: #995e00;
 }

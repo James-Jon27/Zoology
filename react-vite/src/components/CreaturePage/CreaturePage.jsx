@@ -1,18 +1,20 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getOneCreature } from "../../redux/creature";
+import OpenMarbleModal from "../MarbleModal/OpenMarbelModal";
+import MarbleModal from "../MarbleModal";
 import "./CreaturePage.css";
 
 export default function CreaturePage() {
 	const dispatch = useDispatch();
+	const nav = useNavigate();
 	const { id } = useParams();
 	const [isLoading, setLoading] = useState(false);
     const sessionUser = useSelector(state => state.session.user)
 	const creatureSelect = useSelector((state) => state.creature);
 	const creatures = Object.values(creatureSelect);
 	const creature = creatures.find((creature) => creature.id == id);
-	// console.log(creature.lore.length);
 
 	useEffect(() => {
         const fetchCreature = async () => {
@@ -39,9 +41,16 @@ export default function CreaturePage() {
 					<div>
 						<h1 style={{ borderBottom: "solid 3px #CC7E00" }}>{creature.name}</h1>
 					</div>
-					<div className="desc" style={{ fontSize: "1.5rem" }}>{creature.description}</div>
+					<div className="desc" style={{ fontSize: "1.5rem" }}>
+						{creature.description}
+					</div>
 					<div>
-						<h4>
+						<h4
+							onClick={(e) => {
+								e.preventDefault(), nav(`/${creature.category}`);
+							}}
+							style={{cursor: "pointer"}}
+							>
 							{creature.category}, {creature.origin}
 						</h4>
 					</div>
@@ -49,34 +58,39 @@ export default function CreaturePage() {
 			</div>
 			<div className="creatureLore">
 				{creature.lore.length ? (
-					<div>
-                        {creature.lore.map(marble => {
-                            return (
-                                <div key={marble.id} className="marble">
-                                    <h3>{marble.title}</h3>
-									<p>{marble.story}</p>
-                                </div>
-                            )
-                        })}
-                    </div>
+					<div className="marbleContainer">
+						{creature.lore.map((marble) => {
+							return (
+								<div key={marble.id}>
+									<OpenMarbleModal
+										modalComponent={<MarbleModal id={marble.id} />}
+										marble={marble}
+									/>
+								</div>
+							);
+						})}
+					</div>
 				) : (
 					<div style={{ display: "flex", flexDirection: "column" }}>
 						<h1 style={{ textAlign: "center", fontSize: "3rem" }}>No Lore Posted...</h1>
-						{sessionUser && (
-							<button
-								style={{
-									justifyContent: "center",
-									fontSize: "1rem",
-									cursor: "pointer",
-									background: "none",
-									border: "none"
-								}}>
-								Add Some Lore
-							</button>
-						)}
 					</div>
 				)}
 			</div>
+			{sessionUser && (
+				<button
+					className="cButton"
+					style={{
+						justifyContent: "center",
+						fontSize: "2rem",
+						cursor: "pointer",
+						background: "none",
+						border: "none",
+						color: "#ffc466",
+						width: "100%",
+					}}>
+					Add Some Lore
+				</button>
+			)}
 		</div>
 	);
 }
