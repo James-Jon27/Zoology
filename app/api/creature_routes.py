@@ -151,9 +151,9 @@ def new_lore(id):
 
         db.session.add(new_marble)
         db.session.commit()
-        return new_marble.to_dict_basic()
+        return new_marble.to_dict()
 
-    return format_errors(form.errors)
+    return {"errors" : format_errors(form.errors)}, 500
 
 
 @creature_routes.route("/<int:id>/save", methods=["POST"])

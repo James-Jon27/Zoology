@@ -1,0 +1,63 @@
+.addPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mForm {
+    display: flex;
+    height: 70vh;
+    width: 85vw;
+    flex-direction: column;
+    align-items: center;
+    background-color: transparent;
+    padding: 25px;
+    box-shadow: 15px 15px 85px black; 
+}
+
+.mTitle {
+    width: 90%;
+    margin-bottom: 25px;
+}
+
+.mTitle > input {
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    background-color: #FFD899;
+}
+
+.mStory {
+    width: 90%;
+    height: 80%;
+    margin-bottom: 30px;
+}
+
+.mStory > textarea {
+    resize: none;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    overflow-y: scroll;
+    background-color: #FFD899;
+}
+
+.mStory > textarea::-webkit-scrollbar {
+    display: none;
+}
+
+.mButton {
+    color: #ffc466;
+}
+
+.mButton:hover {
+    cursor: pointer;
+	text-decoration: underline;
+	color: #663F00;
+}
+
+.mButton:disabled {
+    text-decoration: line-through;
+    color: #FFD899;
+    cursor: default;
+}

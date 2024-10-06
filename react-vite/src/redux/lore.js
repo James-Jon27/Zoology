@@ -1,4 +1,6 @@
 const GET_MARBLE = "lore/grab";
+const ADD_MARBLE = "lore/add"
+const REMOVE_MARBLE = "lore/remove"
 
 const oneMarble = (marble) => {
 	return {
@@ -6,6 +8,15 @@ const oneMarble = (marble) => {
 		payload: marble,
 	};
 };
+
+const addMarble = (marble) => {
+	return {
+		type: ADD_MARBLE,
+		payload: marble,
+	};
+};
+
+
 
 export const getMarble = (id) => async (dispatch) => {
 	const res = await fetch(`/api/lore/${id}`);
@@ -20,19 +31,19 @@ export const getMarble = (id) => async (dispatch) => {
 };
 
 export const postMarble = (id, marble) => async (dispatch) => {
-    const res = await fetch(`/api/creatures/${id}/lore`, {
-        method: "POST",
-        body: marble
-    })
+	const res = await fetch(`/api/creatures/${id}/lore`, {
+		method: "POST",
+		body: marble,
+	});
 
-    if(res.ok) {
-        const data = await res.json()
-        dispatch(getMarble(data))
-    } else {
-        const err = await res.json()
-        return err
-    }
-}
+	if (res.ok) {
+		const data = await res.json();
+		dispatch(addMarble(data));
+	} else {
+		const err = await res.json();
+		return err.errors;
+	}
+};
 
 export default function loreReducer(state = {}, action) {
 	switch (action.type) {
@@ -41,6 +52,10 @@ export default function loreReducer(state = {}, action) {
 			newState[action.payload.id] = action.payload;
 			return newState;
 		}
+        case ADD_MARBLE : {
+            const  newState = {...state, [action.payload.id]: action.payload}
+            return newState;
+        }
 		default:
 			return state;
 	}

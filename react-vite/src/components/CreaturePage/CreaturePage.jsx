@@ -11,19 +11,18 @@ export default function CreaturePage() {
 	const nav = useNavigate();
 	const { id } = useParams();
 	const [isLoading, setLoading] = useState(false);
-    const sessionUser = useSelector(state => state.session.user)
+	const sessionUser = useSelector((state) => state.session.user);
 	const creatureSelect = useSelector((state) => state.creature);
 	const creatures = Object.values(creatureSelect);
 	const creature = creatures.find((creature) => creature.id == id);
 
 	useEffect(() => {
-        const fetchCreature = async () => {
-            await dispatch(getOneCreature(id));
-            setLoading(true);
-
-        }
+		const fetchCreature = async () => {
+			await dispatch(getOneCreature(id));
+			setLoading(true);
+		};
 		if (!isLoading) {
-            fetchCreature()
+			fetchCreature();
 		}
 	}, [dispatch, isLoading, setLoading, id]);
 
@@ -49,8 +48,7 @@ export default function CreaturePage() {
 							onClick={(e) => {
 								e.preventDefault(), nav(`/${creature.category}`);
 							}}
-							style={{cursor: "pointer"}}
-							>
+							style={{ cursor: "pointer" }}>
 							{creature.category}, {creature.origin}
 						</h4>
 					</div>
@@ -67,7 +65,7 @@ export default function CreaturePage() {
 										marble={marble}
 									/>
 								</div>
-							);
+							)
 						})}
 					</div>
 				) : (
@@ -87,6 +85,11 @@ export default function CreaturePage() {
 						border: "none",
 						color: "#ffc466",
 						width: "100%",
+						marginBottom: "20px"
+					}}
+					onClick={(e) => {
+						e.preventDefault();
+						nav("lore");
 					}}>
 					Add Some Lore
 				</button>

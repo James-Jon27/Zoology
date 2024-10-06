@@ -1,12 +1,7 @@
 .marbleContainer {
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
+	grid-template-columns: repeat(auto-fill, minmax(375px, 1fr));
 	padding: 20px;
-}
-
-.cButton {
-	/* display: flex; */
-	/* justify-content: center; */
 }
 
 .cButton:hover {
@@ -31,10 +26,20 @@
 	background: #001433;
 	color: #ffd899;
 	padding: 50px;
-	height: 80vh;
+    padding-top: 0;
+	height: 85vh;
 	width: 80vw;
-	font-size: 2.25em;
+	font-size: 2em;
     border: 2px solid #995E00;
+}
+
+.marbleAuthor {
+    display: flex;justify-content: space-between;
+}
+
+#author {
+        white-space: nowrap;
+    overflow-x: scroll;
 }
 
 .marbleStory {
@@ -42,14 +47,19 @@
     margin-top: 20px;
 	overflow-y: scroll;
 	margin-bottom: 10px;
-    height: 80%;
+    height: 600px;
 }
 
 .marbleStory > p {
     margin: 0;
-    height: 100%;
+    overflow-y: scroll;
 }
 
-.marbleStory::-webkit-scrollbar {
+.marbleStory::-webkit-scrollbar,
+#author::-webkit-scrollbar {
+	display: none;
+}
+
+.marbleStory > p::-webkit-scrollbar {
 	display: none;
 }

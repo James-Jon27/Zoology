@@ -1,7 +1,9 @@
-import { createBrowserRouter } from 'react-router-dom';
-import Layout from './Layout';
-import HomePage from '../components/HomePage';
-import CreaturePage from '../components/CreaturePage';
+import { createBrowserRouter } from "react-router-dom";
+import Layout from "./Layout";
+import HomePage from "../components/HomePage";
+import CreaturePage from "../components/CreaturePage";
+import UploadLore from "../components/UploadLore/UploadLore";
+import UpdateLore from "../components/UploadLore/UpdateLore";
 
 export const router = createBrowserRouter([
 	{
@@ -12,12 +14,25 @@ export const router = createBrowserRouter([
 				element: <HomePage />,
 			},
 			{
-				path: "/:category",
-				element: <HomePage />
+				path: ":category",
+				element: <HomePage />,
 			},
 			{
-				path: "/creature/:id",
-				element: <CreaturePage />
+				path: "creature/:id",
+				element: <CreaturePage />,
+			},
+			{
+				path: "creature/:id/lore",
+				element: <UploadLore />,
+			},
+			{
+				path: "creature/:id/edit",
+				element: <h1>Update Creature</h1>,
+			},
+
+			{
+				path: "lore/:id",
+				element: <UpdateLore />,
 			},
 			{
 				path: "*",
