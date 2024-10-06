@@ -58,7 +58,7 @@ function MarbleModal({ marbleId }) {
 					<h6 style={{ marginTop: "5px", marginBottom: "0" }}>By {marble.user.username}</h6>
 				</div>
 				<div>
-					{sessionUser.id == marble.userId && (
+					{sessionUser && sessionUser.id == marble.userId && (
 						<div>
 							<button
 								style={{
