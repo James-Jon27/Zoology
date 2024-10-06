@@ -47,7 +47,7 @@ export const getAllCreatures = () => async (dispatch) => {
 		dispatch(getCreatures(data.creatures));
 	} else {
 		const err = await res.json();
-		return err;
+		return err.errors;
 	}
 };
 
@@ -59,7 +59,7 @@ export const getOneCreature = (id) => async (dispatch) => {
 		dispatch(oneCreature(data));
 	} else {
 		const err = await res.json();
-		return err;
+		return err.errors;
 	}
 };
 
@@ -74,7 +74,7 @@ export const addACreature = (creature) => async (dispatch) => {
 		dispatch(addCreature(data));
 	} else {
 		const err = await res.json();
-		return err;
+		return err.errors;
 	}
 };
 
@@ -89,7 +89,7 @@ export const updateACreature = (id, creature) => async (dispatch) => {
 		dispatch(updateCreature(data));
 	} else {
 		const err = await res.json();
-		return err;
+		return err.errors;
 	}
 };
 
@@ -102,7 +102,7 @@ export const removeACreature = (id) => async (dispatch) => {
 		dispatch(removeCreature(id));
 	} else {
 		const err = await res.json();
-		return err;
+		return err.errors;
 	}
 };
 

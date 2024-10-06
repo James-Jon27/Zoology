@@ -1,23 +1,26 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { getMarble } from "../../redux/lore";
-import { useNavigate } from "react-router-dom";
+import { chuckMarble, getMarble } from "../../redux/lore";
+import { useNavigate, useParams } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import { MdEditSquare } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import "./MarbleModal.css";
+import { getOneCreature } from "../../redux/creature";
 
-function MarbleModal({ id }) {
+function MarbleModal({ marbleId }) {
 	const dispatch = useDispatch();
 	const nav = useNavigate();
+    const {id} = useParams()
 	const { closeModal } = useModal();
 	const sessionUser = useSelector((state) => state.session.user);
-	const marble = useSelector((state) => state.lore[id]);
+	const marble = useSelector((state) => state.lore[marbleId]);
 	const [isLoading, setLoading] = useState(false);
+    const [errors, setErrors] = useState({});
 
 	useEffect(() => {
-		const fetchMarble = async (id) => {
-			const serverRes = await dispatch(getMarble(id));
+		const fetchMarble = async (marbleId) => {
+			const serverRes = await dispatch(getMarble(marbleId));
 			if (serverRes) {
 				console.log(serverRes);
 			} else {
@@ -26,9 +29,22 @@ function MarbleModal({ id }) {
 		};
 
 		if (!isLoading) {
-			fetchMarble(id);
+			fetchMarble(marbleId);
 		}
 	});
+
+    const handleDelete = async (e) => {
+        e.preventDefault()
+
+        const res = await dispatch(chuckMarble(marbleId))
+        if(res){
+            setErrors(res)
+            return errors;
+        } else {
+            await dispatch(getOneCreature(id))
+            closeModal()
+        }
+    }
 
 	if (!isLoading || !marble) {
 		return <h1 style={{ color: "white" }}>Collecting Marble No. ###...</h1>;
@@ -51,7 +67,9 @@ function MarbleModal({ id }) {
 									margin: "25px",
 									background: "none",
 									color: "#ffd899",
-								}}>
+								}}
+                                onClick={handleDelete}    
+                            >
 								<MdDelete style={{ width: "50px", height: "50px" }} />
 							</button>
 							<button

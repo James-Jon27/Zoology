@@ -42,7 +42,7 @@ def update_marble(id):
         return {"errors": "Marble Not Found"}, 404
 
     if marble.user_id != current_user.id:
-        return {"errors" : "This is not your marble"}, 500
+        return {"errors" : "This is not your marble"}, 403
 
     form = MarbleForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
@@ -52,9 +52,9 @@ def update_marble(id):
         marble.story=form.data['story']
 
         db.session.commit()
-        return marble.to_dict_basic()
+        return marble.to_dict()
 
-    return format_errors(form.errors)
+    return {"errors" : format_errors(form.errors)}, 400
 
 
 @lore_routes.route("/<int:id>", methods=["DELETE"])
@@ -69,7 +69,7 @@ def delete_mable(id):
         return {"errors": "Marble Not Found"}, 404
 
     if marble.user_id != current_user.id:
-        return {"errors": "This is not your marble"}, 500
+        return {"errors": "This is not your marble"}, 403
 
     db.session.delete(marble)
     db.session.commit()

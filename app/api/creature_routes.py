@@ -46,7 +46,7 @@ def make_creature():
             # if the dictionary doesn't have a url key
             # it means that there was an error when you tried to upload
             # so you send back that error message (and you printed it above)
-            return format_errors(form.errors), 500
+            return format_errors(form.errors), 400
 
         url = upload["url"]
         new_creature = Creature(
@@ -62,7 +62,7 @@ def make_creature():
         return new_creature.to_dict()
 
     if form.errors:
-        return {"errors": format_errors(form.errors)}
+        return {"errors": format_errors(form.errors)}, 400
     
 
 
@@ -92,7 +92,7 @@ def update_creature(id):
         return {"errors": "Creature Not Found"}, 404
 
     if creature.user_id != current_user.id:
-        return {"errors": "This is not your Creature"}, 500
+        return {"errors": "This is not your Creature"}, 403
 
     if form.validate_on_submit():
         creature.name=form.data['name']
@@ -103,7 +103,7 @@ def update_creature(id):
         db.session.commit()
         return creature.to_dict()
 
-    return format_errors(form.errors)
+    return {"errors": format_errors(form.errors)}, 400
 
 
 @creature_routes.route("/<int:id>", methods=["DELETE"])
@@ -118,7 +118,7 @@ def delete_creature(id):
         return {"errors": "Creature Not Found"}, 404
 
     if creature.user_id != current_user.id:
-        return {"errors": "This is not your Creature"}, 500
+        return {"errors": "This is not your Creature"}, 403
 
     remove_file_from_s3(creature.image)
     db.session.delete(creature)
@@ -153,7 +153,7 @@ def new_lore(id):
         db.session.commit()
         return new_marble.to_dict()
 
-    return {"errors" : format_errors(form.errors)}, 500
+    return {"errors" : format_errors(form.errors)}, 400
 
 
 @creature_routes.route("/<int:id>/save", methods=["POST"])
@@ -168,7 +168,7 @@ def save_creature(id):
         return {"errors": "Creature Not Found"}, 404
 
     if current_user in creature.saves:
-        return {"errors": "Already Saved Creature"}, 500
+        return {"errors": "Already Saved Creature"}, 406
 
     creature.saves.append(current_user)
     db.session.commit()
@@ -187,7 +187,7 @@ def delete_save_creature(id):
         return {"errors": "Creature Not Found"}, 404
 
     if current_user not in creature.saves:
-        return {"errors": "Creature Not Saved"}, 500
+        return {"errors": "Creature Not Saved"}, 406
 
     creature.saves.remove(current_user)
     db.session.commit()

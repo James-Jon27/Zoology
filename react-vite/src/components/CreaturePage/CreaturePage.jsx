@@ -61,7 +61,7 @@ export default function CreaturePage() {
 							return (
 								<div key={marble.id}>
 									<OpenMarbleModal
-										modalComponent={<MarbleModal id={marble.id} />}
+										modalComponent={<MarbleModal marbleId={marble.id} />}
 										marble={marble}
 									/>
 								</div>

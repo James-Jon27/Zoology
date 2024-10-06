@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { putMarble } from "../../redux/lore";
+import { getMarble, putMarble } from "../../redux/lore";
 import "./UploadLore.css";
 
 export default function UpdateLore() {
@@ -11,9 +11,26 @@ export default function UpdateLore() {
 	const sessionUser = useSelector((state) => state.session.user);
     const marbles = useSelector(state => state.lore)
     const marble = marbles[id]
-	const [title, setTitle] = useState(marble.title);
-	const [story, setStory] = useState(marble.story);
+	const [title, setTitle] = useState("");
+	const [story, setStory] = useState("");
+    const [isLoading, setLoading] = useState(false)
 	const [errors, setErrors] = useState({});
+
+    useEffect(() => {
+        const fetchMarble = async () => {
+            await dispatch(getMarble(id))
+
+            if(marble) {
+                setTitle(marble.title)
+                setStory(marble.story)
+                setLoading(true)
+            }
+        }
+
+        if(!isLoading) {
+            fetchMarble()
+        }
+    }, [dispatch, id, marble, isLoading])
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -28,7 +45,7 @@ export default function UpdateLore() {
 			setErrors(res);
 			return errors;
 		} else {
-			nav(`/creature/${id}`);
+			nav(`/creature/${marble.creatureId}`);
 		}
 	};
 
@@ -45,6 +62,10 @@ export default function UpdateLore() {
 		}
 		return false;
 	};
+
+    if(!marble || !isLoading) {
+return <h1 style={{ textAlign: "center", fontSize: "3rem" }}>Awaiting Retcon...</h1>;
+    }
 
 	return (
 		<div className="addPage">
@@ -84,7 +105,7 @@ export default function UpdateLore() {
 					}}
 					type="submit"
 					disabled={disabled()}>
-					Post a New Marble
+					Retcon
 				</button>
 			</form>
 		</div>
