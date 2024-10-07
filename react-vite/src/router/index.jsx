@@ -4,6 +4,8 @@ import HomePage from "../components/HomePage";
 import CreaturePage from "../components/CreaturePage";
 import UploadLore from "../components/UploadLore/UploadLore";
 import UpdateLore from "../components/UploadLore/UpdateLore";
+import UploadCreature from "../components/UploadCreature";
+import UpdateCreature from "../components/UploadCreature/UpdateCreature";
 
 export const router = createBrowserRouter([
 	{
@@ -27,7 +29,11 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: "creature/:id/edit",
-				element: <h1>Update Creature</h1>,
+				element: <UpdateCreature />,
+			},
+			{
+				path: "creature/new",
+				element: <UploadCreature />
 			},
 
 			{

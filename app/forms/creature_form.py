@@ -11,7 +11,7 @@ def creature_exists(form, field):
     creature = field.data
     creature = Creature.query.filter(Creature.name == creature).first()
     if creature:
-        raise ValidationError("creature is already in use.")
+        raise ValidationError("Creature Already Exists")
 class CreatureForm(FlaskForm):
     name = StringField("name", validators=[DataRequired(), creature_exists])
     category = StringField("category", validators=[DataRequired()])

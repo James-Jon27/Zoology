@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
-import { getAllCreatures } from "../../redux/creature";
+import { CATEGORIES, getAllCreatures } from "../../redux/creature";
 import "./HomePage.css";
 
 export default function HomePage() {
@@ -31,9 +31,11 @@ export default function HomePage() {
 		);
 	}
 
-		/* {!creatures.length && (
-		<h1 style={{ color:"#FFC466", textAlign: "center", fontSize: "3rem" }}>These Creatures Have Not Been Found</h1>
-	)} */
+	if(category && !CATEGORIES.includes(category)) {
+		return <h1 style={{ color: "#FFC466", textAlign: "center", fontSize: "3rem" }}>
+			{category} Is Not A Supported Category
+		</h1>
+	}
 	
 	return (
 		<div>

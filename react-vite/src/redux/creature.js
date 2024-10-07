@@ -39,6 +39,8 @@ const removeCreature = (creature) => {
 	};
 };
 
+export const CATEGORIES = ["Mythological", "Creepypasta", "Cryptid", "SCP", "Folklore"];
+
 export const getAllCreatures = () => async (dispatch) => {
 	const res = await fetch(`/api/creatures`);
 
@@ -72,9 +74,10 @@ export const addACreature = (creature) => async (dispatch) => {
 	if (res.ok) {
 		const data = await res.json();
 		dispatch(addCreature(data));
+		return data;
 	} else {
 		const err = await res.json();
-		return err.errors;
+		return err;
 	}
 };
 
@@ -87,6 +90,7 @@ export const updateACreature = (id, creature) => async (dispatch) => {
 	if (res.ok) {
 		const data = await res.json();
 		dispatch(updateCreature(data));
+		return data
 	} else {
 		const err = await res.json();
 		return err.errors;

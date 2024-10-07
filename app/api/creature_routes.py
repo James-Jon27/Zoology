@@ -1,10 +1,10 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, request
 from flask_login import current_user, login_required
 from app.api.boto_file import get_unique_filename, remove_file_from_s3, upload_file_to_s3
 from app.forms.creature_form import CreatureForm
 from app.forms.creature_update_form import CreatureUpdateForm
 from app.forms.marble_form import MarbleForm
-from app.models import Creature, Lore, db, user
+from app.models import Creature, Lore, db
 
 creature_routes = Blueprint("creatures", __name__)
 

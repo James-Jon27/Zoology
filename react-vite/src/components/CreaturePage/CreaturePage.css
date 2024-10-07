@@ -3,6 +3,11 @@
 	justify-content: center;
 }
 
+.creatureManipulation {
+	display: flex;
+	justify-content: center;
+}
+
 .creatureImage {
 	display: flex;
 	align-items: center;

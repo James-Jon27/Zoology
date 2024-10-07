@@ -31,7 +31,7 @@ function MarbleModal({ marbleId }) {
 		if (!isLoading) {
 			fetchMarble(marbleId);
 		}
-	});
+	}, [dispatch, isLoading, marbleId]);
 
     const handleDelete = async (e) => {
         e.preventDefault()

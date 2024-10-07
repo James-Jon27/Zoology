@@ -1,9 +1,10 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { getOneCreature } from "../../redux/creature";
+import { getOneCreature, removeACreature } from "../../redux/creature";
 import OpenMarbleModal from "../MarbleModal/OpenMarbelModal";
 import MarbleModal from "../MarbleModal";
+import { MdDelete, MdEditSquare } from "react-icons/md";
 import "./CreaturePage.css";
 
 export default function CreaturePage() {
@@ -15,6 +16,7 @@ export default function CreaturePage() {
 	const creatureSelect = useSelector((state) => state.creature);
 	const creatures = Object.values(creatureSelect);
 	const creature = creatures.find((creature) => creature.id == id);
+	const [errors, setErrors] = useState({});
 
 	useEffect(() => {
 		const fetchCreature = async () => {
@@ -25,6 +27,17 @@ export default function CreaturePage() {
 			fetchCreature();
 		}
 	}, [dispatch, isLoading, setLoading, id]);
+
+	const handleDelete = async (e) => {
+		e.preventDefault()
+
+		const res = await dispatch(removeACreature(id))
+		if(res) {
+			setErrors(res)
+			return errors
+		}
+		return nav("/")
+	}
 
 	if (!isLoading || !creature) {
 		return <h1 style={{ textAlign: "center", fontSize: "3rem" }}>Transporting to Creature...</h1>;
@@ -54,6 +67,34 @@ export default function CreaturePage() {
 					</div>
 				</div>
 			</div>
+			{sessionUser && sessionUser.id === creature.userId && (
+				<div className="creatureManipulation">
+					<button
+						style={{
+							border: "none",
+							cursor: "pointer",
+							margin: "15px",
+							background: "none",
+							color: "#ffd899",
+						}}
+						onClick={handleDelete}>
+						<MdDelete style={{ width: "40px", height: "40px" }} />
+					</button>
+					<button
+						style={{
+							border: "none",
+							cursor: "pointer",
+							margin: "15px",
+							background: "none",
+							color: "#ffd899",
+						}}
+						onClick={(e) => {
+							e.preventDefault(), nav(`/creature/${creature.id}/edit`);
+						}}>
+						<MdEditSquare style={{ width: "40px", height: "40px" }} />
+					</button>
+				</div>
+			)}
 			<div className="creatureLore">
 				{creature.lore.length ? (
 					<div className="marbleContainer">
@@ -65,7 +106,7 @@ export default function CreaturePage() {
 										marble={marble}
 									/>
 								</div>
-							)
+							);
 						})}
 					</div>
 				) : (
@@ -85,7 +126,7 @@ export default function CreaturePage() {
 						border: "none",
 						color: "#ffc466",
 						width: "100%",
-						marginBottom: "20px"
+						marginBottom: "20px",
 					}}
 					onClick={(e) => {
 						e.preventDefault();

@@ -9,28 +9,28 @@ export default function UpdateLore() {
 	const nav = useNavigate();
 	const { id } = useParams();
 	const sessionUser = useSelector((state) => state.session.user);
-    const marbles = useSelector(state => state.lore)
-    const marble = marbles[id]
+	const marbles = useSelector((state) => state.lore);
+	const marble = marbles[id];
 	const [title, setTitle] = useState("");
 	const [story, setStory] = useState("");
-    const [isLoading, setLoading] = useState(false)
+	const [isLoading, setLoading] = useState(false);
 	const [errors, setErrors] = useState({});
 
-    useEffect(() => {
-        const fetchMarble = async () => {
-            await dispatch(getMarble(id))
+	useEffect(() => {
+		const fetchMarble = async () => {
+			await dispatch(getMarble(id));
 
-            if(marble) {
-                setTitle(marble.title)
-                setStory(marble.story)
-                setLoading(true)
-            }
-        }
+			if (marble) {
+				setTitle(marble.title);
+				setStory(marble.story);
+				setLoading(true);
+			}
+		};
 
-        if(!isLoading) {
-            fetchMarble()
-        }
-    }, [dispatch, id, marble, isLoading])
+		if (!isLoading) {
+			fetchMarble();
+		}
+	}, [dispatch, id, marble, isLoading]);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -63,9 +63,9 @@ export default function UpdateLore() {
 		return false;
 	};
 
-    if(!marble || !isLoading) {
-return <h1 style={{ textAlign: "center", fontSize: "3rem" }}>Awaiting Retcon...</h1>;
-    }
+	if (!marble || !isLoading) {
+		return <h1 style={{ textAlign: "center", fontSize: "3rem" }}>Awaiting Retcon...</h1>;
+	}
 
 	return (
 		<div className="addPage">
@@ -79,7 +79,7 @@ return <h1 style={{ textAlign: "center", fontSize: "3rem" }}>Awaiting Retcon...<
 					<input
 						type="text"
 						placeholder="Title"
-                        value={title}
+						value={title}
 						onChange={(e) => setTitle(e.target.value)}
 						required
 					/>
@@ -88,7 +88,7 @@ return <h1 style={{ textAlign: "center", fontSize: "3rem" }}>Awaiting Retcon...<
 				<label className="mStory">
 					<textarea
 						placeholder="Story"
-                        value={story}
+						value={story}
 						onChange={(e) => setStory(e.target.value)}
 						maxLength="9999"
 						required

@@ -1,0 +1,54 @@
+.creatureForm {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 20px;
+}
+
+.nameInput > input {
+    font-family: 'Times New Roman', Times, serif;
+    height: 40px;
+    width: 35vw;
+    padding: 5px;
+    font-size: x-large;
+    text-align: center;
+}
+
+.categoryInput > select {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: x-large;
+    padding: 5px;
+    text-align: center;
+}
+
+.descInput > textarea {
+    font-family: 'Times New Roman', Times, serif;
+    resize: none;
+    font-size: x-large;
+    text-align: center;
+    width: 60vw;
+    height: 30vh;
+    padding: 5px;;
+}
+
+.originInput > input {
+    width: 255px;
+    height: 26px;
+    padding: 5px;
+    font-size: x-large;
+}
+
+.cPButton {
+	color: #ffd899;
+}
+
+.cPButton:hover {
+	cursor: pointer;
+	color: #995e00;
+}
+
+.cPButton:disabled {
+	text-decoration: line-through;
+	color: #995e00;
+	cursor: default;
+}
