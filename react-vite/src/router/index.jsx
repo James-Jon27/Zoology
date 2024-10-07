@@ -6,6 +6,7 @@ import UploadLore from "../components/UploadLore/UploadLore";
 import UpdateLore from "../components/UploadLore/UpdateLore";
 import UploadCreature from "../components/UploadCreature";
 import UpdateCreature from "../components/UploadCreature/UpdateCreature";
+import UserPage from "../components/UserPage";
 
 export const router = createBrowserRouter([
 	{
@@ -18,6 +19,10 @@ export const router = createBrowserRouter([
 			{
 				path: ":category",
 				element: <HomePage />,
+			},
+			{
+				path: "user/:id",
+				element: <UserPage/>
 			},
 			{
 				path: "creature/:id",
