@@ -30,7 +30,6 @@ export default function UploadCreature() {
 		const res = await dispatch(addACreature(form));
 		if (res.errors) {
 			setErrors(res.errors);
-			console.log(errors);
 			setLoading(false);
 			return errors;
 		} else {

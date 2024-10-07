@@ -93,7 +93,7 @@ export const updateACreature = (id, creature) => async (dispatch) => {
 		return data
 	} else {
 		const err = await res.json();
-		return err.errors;
+		return err;
 	}
 };
 
@@ -106,7 +106,7 @@ export const removeACreature = (id) => async (dispatch) => {
 		dispatch(removeCreature(id));
 	} else {
 		const err = await res.json();
-		return err.errors;
+		return err;
 	}
 };
 

@@ -44,15 +44,13 @@ export default function UpdateCreature() {
 		form.append("description", description);
 		form.append("origin", origin);
 
-		setLoading(true);
 		const res = await dispatch(updateACreature(id, form));
 		if (res.errors) {
 			setErrors(res.errors);
-			console.log(errors);
-			setLoading(false);
 			return errors;
 		} else {
-			nav(`/creature/${id}`);
+            await dispatch(getOneCreature(id))
+			return nav(`/creature/${id}`);
 		}
 	};
 
@@ -70,14 +68,14 @@ export default function UpdateCreature() {
 		return false;
 	};
 
-	if (isLoading || !creature) {
+	if (!creature) {
 		return <h1 style={{ textAlign: "center", fontSize: "3rem" }}>Containing to Creature...</h1>;
 	}
 
 	return (
 		<div>
 			<h1 style={{ color: "#FFC466", textAlign: "center", fontSize: "3rem" }}>Retcon Creature</h1>
-			<form className="creatureForm" onSubmit={handleSubmit} encType="multipart/form-data">
+			<form className="creatureForm" onSubmit={handleSubmit}>
 				{errors.name && <p style={{ color: "#FF9F00" }}>{errors.name}</p>}
 				<label className="nameInput">
 					<input

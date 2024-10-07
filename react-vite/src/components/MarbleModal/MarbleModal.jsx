@@ -22,7 +22,8 @@ function MarbleModal({ marbleId }) {
 		const fetchMarble = async (marbleId) => {
 			const serverRes = await dispatch(getMarble(marbleId));
 			if (serverRes) {
-				console.log(serverRes);
+				setErrors(serverRes)
+                return errors
 			} else {
 				setLoading(true);
 			}
@@ -31,7 +32,7 @@ function MarbleModal({ marbleId }) {
 		if (!isLoading) {
 			fetchMarble(marbleId);
 		}
-	}, [dispatch, isLoading, marbleId]);
+	}, [dispatch, isLoading, marbleId, errors]);
 
     const handleDelete = async (e) => {
         e.preventDefault()

@@ -1,12 +1,17 @@
 from flask import Blueprint, request
 from flask_login import current_user, login_required
-from app.api.boto_file import get_unique_filename, remove_file_from_s3, upload_file_to_s3
+from app.api.boto_file import (
+    get_unique_filename,
+    remove_file_from_s3,
+    upload_file_to_s3,
+)
 from app.forms.creature_form import CreatureForm
 from app.forms.creature_update_form import CreatureUpdateForm
 from app.forms.marble_form import MarbleForm
 from app.models import Creature, Lore, db
 
 creature_routes = Blueprint("creatures", __name__)
+
 
 def format_errors(validation_errors):
     """
@@ -27,7 +32,9 @@ def creatures():
     """
 
     creatures = Creature.query.all()
-    return {'creatures': {creature.id : creature.to_dict_basic() for creature in  creatures}}
+    return {
+        "creatures": {creature.id: creature.to_dict_basic() for creature in creatures}
+    }
 
 
 @creature_routes.route("", methods=["POST"])
@@ -52,18 +59,17 @@ def make_creature():
         new_creature = Creature(
             image=url,
             user=current_user,
-            name=form.data['name'],
-            category=form.data['category'],
-            description=form.data['description'],
-            origin=form.data['origin']
-            )
+            name=form.data["name"],
+            category=form.data["category"],
+            description=form.data["description"],
+            origin=form.data["origin"],
+        )
         db.session.add(new_creature)
         db.session.commit()
         return new_creature.to_dict()
 
     if form.errors:
         return {"errors": format_errors(form.errors)}, 400
-    
 
 
 @creature_routes.route("/<int:id>")
@@ -74,7 +80,7 @@ def creature(id):
     creature = Creature.query.get(id)
     if not creature:
         return {"errors": "Creature Not Found"}, 404
-    
+
     return creature.to_dict()
 
 
@@ -95,9 +101,9 @@ def update_creature(id):
         return {"errors": "This is not your Creature"}, 403
 
     if form.validate_on_submit():
-        creature.name=form.data['name']
-        creature.category = (form.data["category"])
-        creature.description = (form.data["description"])
+        creature.name = form.data["name"]
+        creature.category = form.data["category"]
+        creature.description = form.data["description"]
         creature.origin = form.data["origin"]
 
         db.session.commit()
@@ -124,7 +130,7 @@ def delete_creature(id):
     db.session.delete(creature)
     db.session.commit()
 
-    return {"message" : "Deleted"}
+    return {"message": "Deleted"}
 
 
 @creature_routes.route("/<int:id>/lore", methods=["POST"])
@@ -143,17 +149,17 @@ def new_lore(id):
 
     if form.validate_on_submit():
         new_marble = Lore(
-            title=form.data['title'].title(),
-            story=form.data['story'],
+            title=form.data["title"].title(),
+            story=form.data["story"],
             creature=creature,
-            user=current_user
+            user=current_user,
         )
 
         db.session.add(new_marble)
         db.session.commit()
         return new_marble.to_dict()
 
-    return {"errors" : format_errors(form.errors)}, 400
+    return {"errors": format_errors(form.errors)}, 400
 
 
 @creature_routes.route("/<int:id>/save", methods=["POST"])
