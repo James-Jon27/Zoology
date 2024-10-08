@@ -1,0 +1,28 @@
+.saved-creatures {
+	z-index: 1;
+    height: 475px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+	position:absolute;
+    background-color: #663F00;
+    overflow-y: scroll;
+}
+
+.saved-creatures::-webkit-scrollbar {
+    display: none;
+}
+
+.userCircle {
+	aspect-ratio: 1 / 1;
+	height: 150px;
+	margin: 25px;
+	background-color: #001433;
+	border-radius: 50%;
+	border: solid 3px #ffd899;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #ffd899;
+	font-size: 100px;
+}

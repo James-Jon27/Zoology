@@ -51,7 +51,17 @@ function ProfileButton() {
 							<li className="profModal">{user.username}</li>
 							<li className="profModal">{user.email}</li>
 							<li className="profModal">
-								<button style={{background:"none", border: "solid 1px white", color: "white", fontWeight:"bold",cursor:"pointer"}} onClick={logout}>Log Out</button>
+								<button
+									style={{
+										background: "none",
+										border: "solid 1px white",
+										color: "white",
+										fontWeight: "bold",
+										cursor: "pointer",
+									}}
+									onClick={logout}>
+									Log Out
+								</button>
 							</li>
 						</div>
 					) : (

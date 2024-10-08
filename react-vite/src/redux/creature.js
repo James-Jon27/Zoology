@@ -53,6 +53,18 @@ export const getAllCreatures = () => async (dispatch) => {
 	}
 };
 
+export const getSavedCreatures = (id) => async (dispatch) => {
+	const res = await fetch(`/api/users/${id}/creatures`);
+
+	if (res.ok) {
+		const data = await res.json();
+		dispatch(getCreatures(data.creatures));
+	} else {
+		const err = await res.json();
+		return err.errors;
+	}
+};
+
 export const getOneCreature = (id) => async (dispatch) => {
 	const res = await fetch(`/api/creatures/${id}`);
 
