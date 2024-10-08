@@ -10,6 +10,7 @@ export const getUser = (id) => async (dispatch) => {
     if(res.ok) {
         const data = await res.json()
         dispatch(userGrab(data))
+        return data
     } else {
         const err = await res.json()
         return err

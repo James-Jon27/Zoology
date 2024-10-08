@@ -1,5 +1,5 @@
 import { useModal } from "../../context/Modal";
-import "./MarbleModal.css"
+import "./MarbleModal.css";
 
 function OpenMarbleModal({
 	modalComponent, // component to render inside the modal
@@ -18,7 +18,7 @@ function OpenMarbleModal({
 	return (
 		<div onClick={onClick} style={{ cursor: "pointer" }} className="marble">
 			<h2>{marble.title}</h2>
-			<p>{marble.story}</p>;
+			<p>{marble.story}</p>
 		</div>
 	);
 }

@@ -5,9 +5,11 @@ import { thunkLogout } from "../../redux/session";
 import OpenModalMenuItem from "./OpenModalMenuItem";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import { useNavigate } from "react-router-dom";
 
 function ProfileButton() {
 	const dispatch = useDispatch();
+	const nav = useNavigate()
 	const [showMenu, setShowMenu] = useState(false);
 	const user = useSelector((store) => store.session.user);
 	const ulRef = useRef();
@@ -37,6 +39,7 @@ function ProfileButton() {
 		e.preventDefault();
 		dispatch(thunkLogout());
 		closeMenu();
+		nav("/")
 	};
 
 	return (
@@ -48,8 +51,23 @@ function ProfileButton() {
 				<ul className={"profile-dropdown"} ref={ulRef}>
 					{user ? (
 						<div className="userIn">
-							<li className="profModal">{user.username}</li>
+							<li className="profModal" style={{cursor: "pointer"}} onClick={() => {nav(`/user/${user.id}`), closeMenu()}}>{user.username}</li>
 							<li className="profModal">{user.email}</li>
+							<li className="profModal">
+								<button
+									style={{
+										background: "none",
+										border: "solid 1px white",
+										color: "white",
+										fontWeight: "bold",
+										cursor: "pointer",
+										marginBottom: "15px",
+										marginTop: "10px"
+									}}
+									onClick={() => {nav("/creature/new"), closeMenu()}}>
+									Create Creature
+								</button>
+							</li>
 							<li className="profModal">
 								<button
 									style={{

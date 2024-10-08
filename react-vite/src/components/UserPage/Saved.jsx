@@ -1,13 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import { MdArrowDropDown } from "react-icons/md";
 import { useSelector } from "react-redux";
-import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 
 export default function Saved({ saved }) {
 	const [showMenu, setShowMenu] = useState(false);
     const {id} = useParams()
 	const user = useSelector((state) => state.user[id]);
-	const nav = useNavigate();
 	const ulRef = useRef();
 
 	const toggleMenu = (e) => {
@@ -39,8 +38,7 @@ export default function Saved({ saved }) {
 			{showMenu && (
 				<ul className={"saved-creatures"} ref={ulRef}>
 					<h1>{user.username}&apos;s Saved Creatures</h1>
-					{saved &&
-						saved.map((creature) => {
+					{saved.map((creature) => {
 							return (
 								<NavLink
 									onClick={closeMenu}
