@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { CATEGORIES, getAllCreatures } from "../../redux/creature";
 import "./HomePage.css";
+import { SyncLoader } from "react-spinners";
 
 export default function HomePage() {
 	const dispatch = useDispatch();
@@ -22,7 +23,7 @@ export default function HomePage() {
 	if (!isLoading) {
 		return (
 			<h1 style={{ color: "#FFC466", textAlign: "center", fontSize: "3rem" }}>
-				Transporting to Containment Center...
+				Transporting to Containment Center<SyncLoader/>
 			</h1>
 		);
 	}

@@ -82,7 +82,7 @@ export default function CreaturePage() {
 		if (saving) {
 			return (
 				<div className="saving">
-					<BounceLoader size="30px"/>
+					<BounceLoader size="30px"/> Saving...
 				</div>
 			);
 		} else if (!bool) {

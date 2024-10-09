@@ -39,7 +39,7 @@ const removeCreature = (creature) => {
 	};
 };
 
-export const CATEGORIES = ["Mythological", "Creepypasta", "Cryptid", "SCP", "Folklore"];
+export const CATEGORIES = ["Mythological", "Creepypasta", "Cryptid", "SCP", "Folklore", "Other"];
 
 export const getAllCreatures = () => async (dispatch) => {
 	const res = await fetch(`/api/creatures`);
