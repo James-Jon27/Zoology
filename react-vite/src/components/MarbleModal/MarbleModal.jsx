@@ -7,6 +7,7 @@ import { MdEditSquare } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import "./MarbleModal.css";
 import { getOneCreature } from "../../redux/creature";
+import { SyncLoader } from "react-spinners";
 
 function MarbleModal({ marbleId }) {
 	const dispatch = useDispatch();
@@ -48,7 +49,7 @@ function MarbleModal({ marbleId }) {
     }
 
 	if (!isLoading || !marble) {
-		return <h1 style={{ color: "white" }}>Collecting Marble No. ###...</h1>;
+		return <h1 style={{ color: "white", display: "flex" }}>Collecting Marble No. ###<SyncLoader color="white"/></h1>;
 	}
 
 	return (

@@ -19,10 +19,6 @@ export default function HomePage() {
 		}
 	}, [dispatch, setLoading, isLoading]);
 
-	// const saveCreature = async (e) => {
-	//     e.preventDefault()
-	// }
-
 	if (!isLoading) {
 		return (
 			<h1 style={{ color: "#FFC466", textAlign: "center", fontSize: "3rem" }}>

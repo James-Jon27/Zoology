@@ -38,6 +38,7 @@ export default function Saved({ saved }) {
 			{showMenu && (
 				<ul className={"saved-creatures"} ref={ulRef}>
 					<h1>{user.username}&apos;s Saved Creatures</h1>
+					{saved.length === 0 && <h1>No Creatures Saved</h1>}
 					{saved.map((creature) => {
 							return (
 								<NavLink

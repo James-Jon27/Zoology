@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addACreature } from "../../redux/creature";
 import "./UploadCreature.css";
+import { RingLoader } from "react-spinners";
 
 export default function UploadCreature() {
 	const dispatch = useDispatch();
@@ -125,7 +126,7 @@ export default function UploadCreature() {
 					type="submit">
 					Add to the Zoo
 				</button>
-				{isLoading && <p>Loading...</p>}
+				{isLoading && <RingLoader />}
 			</form>
 		</div>
 	);

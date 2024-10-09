@@ -5,6 +5,7 @@ import { getUser } from "../../redux/user";
 import { getSavedCreatures } from "../../redux/creature";
 import Saved from "./Saved";
 import "./UserPage.css";
+import { SyncLoader } from "react-spinners";
 
 export default function UserPage() {
 	const dispatch = useDispatch();
@@ -32,7 +33,7 @@ export default function UserPage() {
 	}, [dispatch, id, isLoading]);
 
 	if (!isLoading) {
-		return <h1 style={{ textAlign: "center", fontSize: "3rem" }}>Calling Zookeeper...</h1>;
+		return <h1 style={{ textAlign: "center", fontSize: "3rem" }}>Calling Zookeeper<SyncLoader/></h1>;
 	}
 
 	if (!user && isLoading) {

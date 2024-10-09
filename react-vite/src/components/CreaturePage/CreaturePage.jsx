@@ -1,11 +1,14 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { getOneCreature, removeACreature } from "../../redux/creature";
+import { getOneCreature, removeACreature, saveACreature, unsaveACreature } from "../../redux/creature";
 import OpenMarbleModal from "../MarbleModal/OpenMarbelModal";
 import MarbleModal from "../MarbleModal";
 import { MdDelete, MdEditSquare } from "react-icons/md";
+import { BounceLoader, SyncLoader } from "react-spinners";
+import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
 import "./CreaturePage.css";
+import { thunkAuthenticate } from "../../redux/session";
 
 export default function CreaturePage() {
 	const dispatch = useDispatch();
@@ -17,6 +20,7 @@ export default function CreaturePage() {
 	const creatures = Object.values(creatureSelect);
 	const creature = creatures.find((creature) => creature.id == id);
 	const [errors, setErrors] = useState({});
+	const [saving, setSaving] = useState(false);
 
 	useEffect(() => {
 		const fetchCreature = async () => {
@@ -29,22 +33,76 @@ export default function CreaturePage() {
 	}, [dispatch, isLoading, setLoading, id]);
 
 	const handleDelete = async (e) => {
-		e.preventDefault()
+		e.preventDefault();
 
-		const res = await dispatch(removeACreature(id))
-		if(res) {
-			setErrors(res)
-			return errors
+		const res = await dispatch(removeACreature(id));
+		if (res) {
+			setErrors(res);
+			return errors;
 		}
-		return nav("/")
-	}
+		return nav("/");
+	};
 
 	if (!isLoading || !creature) {
-		return <h1 style={{ textAlign: "center", fontSize: "3rem" }}>Transporting to Creature...</h1>;
+		return (
+			<h1 style={{ textAlign: "center", fontSize: "3rem" }}>
+				Transporting to Creature
+				<SyncLoader />
+			</h1>
+		);
 	}
+
+	const saved = () => {
+		if (!sessionUser || !sessionUser.saved) {
+			return false
+		}
+		return sessionUser.saved.some((creature) => creature.id == id)
+	}
+	console.log(saved())
+	
+	const save = async (e) => {
+		e.preventDefault()
+
+		setSaving(true)
+		await dispatch(saveACreature(id))
+		await dispatch(thunkAuthenticate())
+		setSaving(false)
+	}
+	
+	const unsave = async (e) => {
+		e.preventDefault()
+		
+		setSaving(true)
+		await dispatch(unsaveACreature(id))
+		await dispatch(thunkAuthenticate())
+		setSaving(false)
+	}
+
+	const savingCreature = (bool) => {
+		if (saving) {
+			return (
+				<div className="saving">
+					<BounceLoader size="30px"/>
+				</div>
+			);
+		} else if (!bool) {
+			return (
+				<div className="saving" >
+					<CiCirclePlus onClick={save} style={{height: "30px", width: "30px",padding: "0", margin: "0", color: "#FFD899"}}/>
+				</div>
+			);
+		} else if (bool) {
+			return (
+				<div className="saving">
+					<CiCircleMinus onClick={unsave} style={{ height: "30px", width: "30px",padding: "0", margin: "0", color: "#FFD899" }} />
+				</div>
+			);
+		}
+	};
 
 	return (
 		<div>
+			{sessionUser && savingCreature(saved())}
 			<div className="creatureInfo">
 				<div className="creatureImage">
 					<img src={creature.image} alt={creature.name} />

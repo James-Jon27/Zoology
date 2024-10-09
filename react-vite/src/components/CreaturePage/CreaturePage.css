@@ -43,3 +43,18 @@
 	display: flex;
 	justify-content: center;
 }
+
+.saving {
+	position: fixed;
+	z-index: 5;
+	left: 25px;
+	top: 100px;
+}
+
+.marble {
+	transition:transform .5s ease;
+}
+
+.marble:hover {
+	transform: scale(1.3);
+}

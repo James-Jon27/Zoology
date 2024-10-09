@@ -122,6 +122,30 @@ export const removeACreature = (id) => async (dispatch) => {
 	}
 };
 
+export const saveACreature = (id) => async (dispatch) => {
+	const res = await fetch(`/api/creatures/${id}/save`, {method: "POST"})
+
+	if(res.ok) {
+		const data = await res.json()
+		dispatch(updateCreature(data))
+	}else {
+		const err = await res.json()
+		return err
+	}
+}
+
+export const unsaveACreature = (id) => async (dispatch) => {
+	const res = await fetch(`/api/creatures/${id}/save`, {method: "DELETE"})
+
+	if(res.ok) {
+		const data = await res.json()
+		dispatch(updateCreature(data))
+	}else {
+		const err = await res.json()
+		return err
+	}
+}
+
 export default function creaturesReducer(state = {}, action) {
 	switch (action.type) {
 		case ALL_CREATURES: {
