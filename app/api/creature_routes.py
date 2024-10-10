@@ -59,7 +59,7 @@ def make_creature():
         new_creature = Creature(
             image=url,
             user=current_user,
-            name=form.data["name"],
+            name=form.data["name"].title(),
             category=form.data["category"],
             description=form.data["description"],
             origin=form.data["origin"],
@@ -101,7 +101,7 @@ def update_creature(id):
         return {"errors": "This is not your Creature"}, 403
 
     if form.validate_on_submit():
-        creature.name = form.data["name"]
+        creature.name = form.data["name"].title()
         creature.category = form.data["category"]
         creature.description = form.data["description"]
         creature.origin = form.data["origin"]

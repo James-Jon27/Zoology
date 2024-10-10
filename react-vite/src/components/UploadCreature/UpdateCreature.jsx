@@ -69,7 +69,16 @@ export default function UpdateCreature() {
 	};
 
 	if (!creature || isLoading) {
-		return <h1 style={{ textAlign: "center", fontSize: "3rem" }}>Containing Creature...</h1>;
+		return (
+			<h1
+				style={{
+					textAlign: "center",
+					fontSize: "3rem",
+					color: "#c3c9cd",
+				}}>
+				Containing Creature...
+			</h1>
+		);
 	}
 
 	return (
