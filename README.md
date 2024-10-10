@@ -5,9 +5,9 @@
 Welcom to **Zoology**, a project that provides a space to view and interact with different mythical and cryptid creatures. 
 
 ## Index
-- [User Stories]()
-- [MVP-List]()
-- [Database Schema]()
+- [MVP-List](https://github.com/James-Jon27/Zoology/wiki/MVP-List)
+- [User Stories](https://github.com/James-Jon27/Zoology/wiki/User-Stories)
+- [Database Schema](https://github.com/James-Jon27/Zoology/wiki/Database-Schema)
 - [WireFrames]()
 
 ## Technologies Used
