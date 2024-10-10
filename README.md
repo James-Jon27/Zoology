@@ -1,4 +1,31 @@
-# Flask React Project
+# Zoology
+
+## Introduction
+
+Welcom to **Zoology**, a project that provides a space to view and interact with different mythical and cryptid creatures. 
+
+## Index
+- [User Stories]()
+- [MVP-List]()
+- [Database Schema]()
+- [WireFrames]()
+
+## Technologies Used
+
+- JavaScript
+- React/Redux
+- CSS
+- HTML
+- Python
+- Flask/SQLAlchemy
+- AWS
+
+## Overview
+
+Zoology is an app that was created to allow users to find and create information on odd creatures found across the world.
+
+
+## Flask React Project
 
 This is the starter for the Flask React project.
 
