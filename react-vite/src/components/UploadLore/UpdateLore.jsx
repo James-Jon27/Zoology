@@ -64,17 +64,21 @@ export default function UpdateLore() {
 	};
 
 	if (!marble || !isLoading) {
-		return <h1 style={{ textAlign: "center", fontSize: "3rem" }}>Awaiting Retcon...</h1>;
+		return (
+			<h1 style={{ textAlign: "center", color: "#c3c9cd", fontSize: "3rem" }}>
+				Awaiting Retcon...
+			</h1>
+		);
 	}
 
 	return (
 		<div className="addPage">
-			<h1>Add To The Lore</h1>
+			<h1 style={{ color: "#c3c9cd" }}>Update The Lore</h1>
 			<form className="mForm" onSubmit={handleSubmit}>
 				{title.length > 49 && (
-					<p style={{ color: "#FF9F00" }}>Title can not be longer than 50 characters.</p>
+					<p style={{ color: "#c3c9cd" }}>Title can not be longer than 50 characters.</p>
 				)}
-				{errors.title && <p style={{ color: "#FF9F00" }}>{errors.title}</p>}
+				{errors.title && <p style={{ color: "#c3c9cd" }}>{errors.title}</p>}
 				<label className="mTitle">
 					<input
 						type="text"
@@ -84,7 +88,7 @@ export default function UpdateLore() {
 						required
 					/>
 				</label>
-				{errors.story && <p style={{ color: "#FF9F00" }}>{errors.story}</p>}
+				{errors.story && <p style={{ color: "#c3c9cd" }}>{errors.story}</p>}
 				<label className="mStory">
 					<textarea
 						placeholder="Story"

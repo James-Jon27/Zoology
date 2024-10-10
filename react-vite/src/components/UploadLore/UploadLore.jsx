@@ -46,29 +46,29 @@ export default function UploadLore() {
 
 	return (
 		<div className="addPage">
-			<h1>Add To The Lore</h1>
+			<h1 style={{ color: "#c3c9cd" }}>Add To The Lore</h1>
 			<form className="mForm" onSubmit={handleSubmit}>
 				{title.length > 49 && (
-					<p style={{ color: "#FF9F00" }}>Title can not be longer than 50 characters.</p>
+					<p style={{ color: "#c3c9cd" }}>Title can not be longer than 50 characters.</p>
 				)}
-				{errors.title && <p style={{ color: "#FF9F00" }}>{errors.title}</p>}
+				{errors.title && <p style={{ color: "#c3c9cd" }}>{errors.title}</p>}
 				<label className="mTitle">
 					<input
 						type="text"
 						placeholder="Title"
-                        value={title}
+						value={title}
 						onChange={(e) => setTitle(e.target.value)}
 						required
 					/>
 				</label>
 				{story.length > 9999 && (
-					<p style={{ color: "#FF9F00" }}>Story can not be longer than 9,999 characters.</p>
+					<p style={{ color: "#c3c9cd" }}>Story can not be longer than 9,999 characters.</p>
 				)}
-				{errors.story && <p style={{ color: "#FF9F00" }}>{errors.story}</p>}
+				{errors.story && <p style={{ color: "#c3c9cd" }}>{errors.story}</p>}
 				<label className="mStory">
 					<textarea
 						placeholder="Story"
-                        value={story}
+						value={story}
 						onChange={(e) => setStory(e.target.value)}
 						maxLength="9999"
 						required

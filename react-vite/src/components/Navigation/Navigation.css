@@ -1,7 +1,7 @@
 html,
 body {
 	margin: 0;
-	background-color: #0062FF;
+	background-color: #0f0f81;
 }
 
 li {
@@ -10,7 +10,8 @@ li {
 
 .navbar {
 	align-items: center;
-	background: linear-gradient(to bottom, #ffffff, #0062FF);
+	background: #c3c9cd;
+	border-bottom: solid 5px black;
 	margin-left: 50px;
 	margin-right: 50px;
 }
@@ -26,7 +27,7 @@ li {
 	padding: 10px;
 	flex-direction: column;
 	align-items: center;
-	color: white;
+	color: #c3c9cd;
 	background: #001433;
 }
 

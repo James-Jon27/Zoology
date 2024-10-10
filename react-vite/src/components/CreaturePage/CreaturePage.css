@@ -16,11 +16,11 @@
 .creatureImage > img {
 	height: 450px;
 	clip-path: xywh(0 1px 100% 100% round 15% 0);
-	border: solid 5px #cc7e00;
+	border: solid 5px #c3c9cd;
 }
 
 .creatureData {
-	color: #001433;
+	color: #c3c9cd;
 	width: 325px;
 	height: 450px;
 	display: flex;
@@ -28,7 +28,7 @@
 	justify-content: space-between;
 	text-align: center;
 	margin: 15px;
-	border: solid 5px #cc7e00;
+	border: solid 5px #c3c9cd;
 }
 
 .desc {
@@ -46,9 +46,9 @@
 
 .saving {
 	position: fixed;
-	z-index: 5;
-	left: 25px;
-	top: 100px;
+	z-index: 1;
+	left: 3%;
+	top: 12%;
 }
 
 .marble {

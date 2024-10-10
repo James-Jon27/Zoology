@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { CATEGORIES, getAllCreatures } from "../../redux/creature";
-import "./HomePage.css";
 import { SyncLoader } from "react-spinners";
+import Categories from "./Categories";
+import "./HomePage.css";
 
 export default function HomePage() {
 	const dispatch = useDispatch();
@@ -22,25 +23,31 @@ export default function HomePage() {
 
 	if (!isLoading) {
 		return (
-			<h1 style={{ color: "#FFC466", textAlign: "center", fontSize: "3rem" }}>
-				Transporting to Containment Center<SyncLoader/>
+			<h1 style={{ color: "#c3c9cd", textAlign: "center", fontSize: "3rem" }}>
+				Transporting to Containment Center
+				<SyncLoader color="#c3c9cd" />
 			</h1>
 		);
 	}
 
 	if(category && !CATEGORIES.includes(category)) {
-		return <h1 style={{ color: "#FFC466", textAlign: "center", fontSize: "3rem" }}>
-			{category} Is Not A Supported Category
-		</h1>
+		return (
+			<h1 style={{ color: "#c3c9cd", textAlign: "center", fontSize: "3rem" }}>
+				{category} Is Not A Supported Category
+			</h1>
+		);
 	}
 	
 	return (
 		<div>
 			{category ? (
 				<div>
-					<h1 style={{ color: "#FFC466", textAlign: "center", fontSize: "3rem" }}>
-						{category} Creatures
-					</h1>
+					<div style={{ display: "flex", justifyContent: "center" }}>
+						<h1 style={{ color: "#c3c9cd", textAlign: "center", fontSize: "3rem" }}>
+							{category} Creatures
+						</h1>
+						<Categories />
+					</div>
 					<div id="liner" style={{ overflowY: "scroll", height: "75vh" }}>
 						{creatures &&
 							creatures
@@ -56,7 +63,12 @@ export default function HomePage() {
 												<p style={{ fontSize: "1.7rem" }}>{creature.description}</p>
 											</div>
 											<div className="cWhereAbouts">
-												<h3 onClick={(e) => {e.preventDefault(), nav(`/${creature.category}`)}}>{creature.category}</h3>
+												<h3
+													onClick={(e) => {
+														e.preventDefault(), nav(`/${creature.category}`);
+													}}>
+													{creature.category}
+												</h3>
 												<h3>{creature.origin}</h3>
 											</div>
 										</NavLink>
@@ -66,7 +78,12 @@ export default function HomePage() {
 				</div>
 			) : (
 				<div>
-					<h1 style={{ color: "#FFC466", textAlign: "center", fontSize: "3rem" }}>All Creatures</h1>
+					<div style={{ display: "flex", justifyContent: "center" }}>
+						<h1 style={{ color: "#c3c9cd", textAlign: "center", fontSize: "3rem" }}>
+							All Creatures
+						</h1>
+						<Categories />
+					</div>
 					<div id="liner" style={{ overflowY: "scroll", height: "75vh" }}>
 						{creatures &&
 							creatures.map((creature) => {
@@ -80,7 +97,12 @@ export default function HomePage() {
 											<p style={{ fontSize: "1.7rem" }}>{creature.description}</p>
 										</div>
 										<div className="cWhereAbouts">
-											<h3 onClick={(e) => {e.preventDefault(), nav(`/${creature.category}`)}}>{creature.category}</h3>
+											<h3
+												onClick={(e) => {
+													e.preventDefault(), nav(`/${creature.category}`);
+												}}>
+												{creature.category}
+											</h3>
 											<h3>{creature.origin}</h3>
 										</div>
 									</NavLink>

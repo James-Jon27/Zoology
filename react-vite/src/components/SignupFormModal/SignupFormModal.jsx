@@ -5,27 +5,26 @@ import { thunkSignup } from "../../redux/session";
 import "./SignupForm.css";
 
 function SignupFormModal() {
-  const dispatch = useDispatch();
-  const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
-  const [firstName, setFirstName] = useState("");
+	const dispatch = useDispatch();
+	const [email, setEmail] = useState("");
+	const [username, setUsername] = useState("");
+	const [firstName, setFirstName] = useState("");
 	const [lastName, setLastName] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [errors, setErrors] = useState({});
-  const { closeModal } = useModal();
+	const [password, setPassword] = useState("");
+	const [confirmPassword, setConfirmPassword] = useState("");
+	const [errors, setErrors] = useState({});
+	const { closeModal } = useModal();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+	const handleSubmit = async (e) => {
+		e.preventDefault();
 
-    if (password !== confirmPassword) {
-      return setErrors({
-        confirmPassword:
-          "Confirm Password field must be the same as the Password field",
-      });
-    }
+		if (password !== confirmPassword) {
+			return setErrors({
+				confirmPassword: "Confirm Password field must be the same as the Password field",
+			});
+		}
 
-    const serverResponse = await dispatch(
+		const serverResponse = await dispatch(
 			thunkSignup({
 				email,
 				username,
@@ -35,12 +34,12 @@ function SignupFormModal() {
 			})
 		);
 
-    if (serverResponse) {
-      setErrors(serverResponse);
-    } else {
-      closeModal();
-    }
-  };
+		if (serverResponse) {
+			setErrors(serverResponse);
+		} else {
+			closeModal();
+		}
+	};
 
 	return (
 		<div className="sign-modal">

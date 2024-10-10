@@ -1,14 +1,19 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { getOneCreature, removeACreature, saveACreature, unsaveACreature } from "../../redux/creature";
+import {
+	getOneCreature,
+	removeACreature,
+	saveACreature,
+	unsaveACreature,
+} from "../../redux/creature";
 import OpenMarbleModal from "../MarbleModal/OpenMarbelModal";
 import MarbleModal from "../MarbleModal";
-import { MdDelete, MdEditSquare } from "react-icons/md";
+import { MdDelete, MdEditSquare, MdOutlineCancel, MdOutlineCheckCircle } from "react-icons/md";
 import { BounceLoader, SyncLoader } from "react-spinners";
 import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
-import "./CreaturePage.css";
 import { thunkAuthenticate } from "../../redux/session";
+import "./CreaturePage.css";
 
 export default function CreaturePage() {
 	const dispatch = useDispatch();
@@ -21,6 +26,7 @@ export default function CreaturePage() {
 	const creature = creatures.find((creature) => creature.id == id);
 	const [errors, setErrors] = useState({});
 	const [saving, setSaving] = useState(false);
+	const [confirmDelete, setConfirmDelete] = useState(false);
 
 	useEffect(() => {
 		const fetchCreature = async () => {
@@ -45,63 +51,142 @@ export default function CreaturePage() {
 
 	if (!isLoading || !creature) {
 		return (
-			<h1 style={{ textAlign: "center", fontSize: "3rem" }}>
+			<h1 style={{ textAlign: "center", fontSize: "3rem", color: "#c3c9cd" }}>
 				Transporting to Creature
-				<SyncLoader />
+				<SyncLoader color="#c3c9cd" />
 			</h1>
 		);
 	}
 
 	const saved = () => {
 		if (!sessionUser || !sessionUser.saved) {
-			return false
+			return false;
 		}
-		return sessionUser.saved.some((creature) => creature.id == id)
-	}
-	console.log(saved())
-	
-	const save = async (e) => {
-		e.preventDefault()
+		return sessionUser.saved.some((creature) => creature.id == id);
+	};
+	console.log(saved());
 
-		setSaving(true)
-		await dispatch(saveACreature(id))
-		await dispatch(thunkAuthenticate())
-		setSaving(false)
-	}
-	
+	const save = async (e) => {
+		e.preventDefault();
+
+		setSaving(true);
+		await dispatch(saveACreature(id));
+		await dispatch(thunkAuthenticate());
+		setSaving(false);
+	};
+
 	const unsave = async (e) => {
-		e.preventDefault()
-		
-		setSaving(true)
-		await dispatch(unsaveACreature(id))
-		await dispatch(thunkAuthenticate())
-		setSaving(false)
-	}
+		e.preventDefault();
+
+		setSaving(true);
+		await dispatch(unsaveACreature(id));
+		await dispatch(thunkAuthenticate());
+		setSaving(false);
+	};
 
 	const savingCreature = (bool) => {
 		if (saving) {
 			return (
-				<div className="saving">
-					<BounceLoader size="30px"/> Saving...
+				<div className="saving" style={{display: "flex", gap: "5px", alignItems: "center", color: "#c3c9cd"}}>
+					<BounceLoader size="30px" /> Saving...
 				</div>
 			);
 		} else if (!bool) {
 			return (
-				<div className="saving" >
-					<CiCirclePlus onClick={save} style={{height: "30px", width: "30px",padding: "0", margin: "0", color: "#FFD899"}}/>
+				<div
+					className="saving"
+					style={{ display: "flex", gap: "5px", alignItems: "center", color: "#c3c9cd" }}>
+					<CiCirclePlus
+						onClick={save}
+						style={{ height: "35px", width: "35px", padding: "0", margin: "0", color: "#c3c9cd" }}
+					/>{" "}
+					Save
 				</div>
 			);
 		} else if (bool) {
 			return (
-				<div className="saving">
-					<CiCircleMinus onClick={unsave} style={{ height: "30px", width: "30px",padding: "0", margin: "0", color: "#FFD899" }} />
+				<div className="saving" style={{ display: "flex", gap: "5px", alignItems: "center", color: "#c3c9cd" }}>
+					<CiCircleMinus
+						onClick={unsave}
+						style={{ height: "35px", width: "35px", padding: "0", margin: "0", color: "#c3c9cd" }}
+					/> Remove
 				</div>
 			);
 		}
 	};
 
+	const deleteSafety = (bool) => {
+		if (!bool) {
+			return (
+				<div style={{ display: "flex", justifyContent: "center" }}>
+					<button
+						style={{
+							border: "none",
+							cursor: "pointer",
+							margin: "25px",
+							background: "none",
+							color: "#c3c9cd",
+						}}
+						onClick={(e) => {
+							e.preventDefault(), setConfirmDelete(true);
+						}}>
+						<MdDelete style={{ width: "50px", height: "50px" }} />
+					</button>
+					<button
+						style={{
+							border: "none",
+							cursor: "pointer",
+							margin: "25px",
+							background: "none",
+							color: "#c3c9cd",
+						}}
+						onClick={(e) => {
+							e.preventDefault(), nav(`/creature/${creature.id}/edit`);
+						}}>
+						<MdEditSquare style={{ width: "50px", height: "50px" }} />
+					</button>
+				</div>
+			);
+		} else {
+			return (
+				<div style={{ display: "flex", justifyContent: "center" }}>
+					<button
+						style={{
+							border: "none",
+							cursor: "pointer",
+							margin: "25px",
+							background: "none",
+							color: "#c3c9cd",
+						}}
+						onClick={handleDelete}>
+						<MdOutlineCheckCircle style={{ width: "50px", height: "50px" }} />
+					</button>
+					<button
+						style={{
+							border: "none",
+							cursor: "pointer",
+							margin: "25px",
+							background: "none",
+							color: "#c3c9cd",
+						}}
+						onClick={(e) => {
+							e.preventDefault(), setConfirmDelete(false);
+						}}>
+						<MdOutlineCancel style={{ width: "50px", height: "50px" }} />
+					</button>
+				</div>
+			);
+		}
+	};
+
+	const handleClickAway = () => {
+		if (confirmDelete) {
+			setConfirmDelete(false);
+		}
+	};
+
 	return (
-		<div>
+		<div onClick={handleClickAway}>
 			{sessionUser && savingCreature(saved())}
 			<div className="creatureInfo">
 				<div className="creatureImage">
@@ -109,7 +194,7 @@ export default function CreaturePage() {
 				</div>
 				<div className="creatureData">
 					<div>
-						<h1 style={{ borderBottom: "solid 3px #CC7E00" }}>{creature.name}</h1>
+						<h1 style={{ borderBottom: "solid 3px #c3c9cd" }}>{creature.name}</h1>
 					</div>
 					<div className="desc" style={{ fontSize: "1.5rem" }}>
 						{creature.description}
@@ -125,34 +210,7 @@ export default function CreaturePage() {
 					</div>
 				</div>
 			</div>
-			{sessionUser && sessionUser.id === creature.userId && (
-				<div className="creatureManipulation">
-					<button
-						style={{
-							border: "none",
-							cursor: "pointer",
-							margin: "15px",
-							background: "none",
-							color: "#ffd899",
-						}}
-						onClick={handleDelete}>
-						<MdDelete style={{ width: "40px", height: "40px" }} />
-					</button>
-					<button
-						style={{
-							border: "none",
-							cursor: "pointer",
-							margin: "15px",
-							background: "none",
-							color: "#ffd899",
-						}}
-						onClick={(e) => {
-							e.preventDefault(), nav(`/creature/${creature.id}/edit`);
-						}}>
-						<MdEditSquare style={{ width: "40px", height: "40px" }} />
-					</button>
-				</div>
-			)}
+			{sessionUser && sessionUser.id === creature.userId && deleteSafety(confirmDelete)}
 			<div className="creatureLore">
 				{creature.lore.length ? (
 					<div className="marbleContainer">
@@ -169,7 +227,9 @@ export default function CreaturePage() {
 					</div>
 				) : (
 					<div style={{ display: "flex", flexDirection: "column" }}>
-						<h1 style={{ textAlign: "center", fontSize: "3rem" }}>No Lore Posted...</h1>
+						<h1 style={{ textAlign: "center", fontSize: "3rem", color: "#c3c9cd" }}>
+							No Lore Posted...
+						</h1>
 					</div>
 				)}
 			</div>
@@ -182,7 +242,7 @@ export default function CreaturePage() {
 						cursor: "pointer",
 						background: "none",
 						border: "none",
-						color: "#ffc466",
+						color: "#c3c9cd",
 						width: "100%",
 						marginBottom: "20px",
 					}}

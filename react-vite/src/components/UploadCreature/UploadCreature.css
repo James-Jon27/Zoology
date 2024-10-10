@@ -3,52 +3,63 @@
 	flex-direction: column;
 	align-items: center;
 	gap: 20px;
+	background-color: transparent;
+	padding: 25px;
+	box-shadow: 15px 15px 85px black;
 }
 
 .nameInput > input {
-    font-family: 'Times New Roman', Times, serif;
-    height: 40px;
-    width: 35vw;
-    padding: 5px;
-    font-size: x-large;
-    text-align: center;
+	font-family: "Times New Roman", Times, serif;
+	height: 40px;
+	width: 35vw;
+	padding: 5px;
+	font-size: x-large;
+	text-align: center;
+	border: solid 3px black;
+    background-color: #c3c9cd
 }
 
 .categoryInput > select {
-    font-family: 'Times New Roman', Times, serif;
-    font-size: x-large;
-    padding: 5px;
-    text-align: center;
+	font-family: "Times New Roman", Times, serif;
+	font-size: x-large;
+	padding: 5px;
+	text-align: center;
+	border: solid 3px black;
+    background-color: #c3c9cd
 }
 
 .descInput > textarea {
-    font-family: 'Times New Roman', Times, serif;
-    resize: none;
-    font-size: x-large;
-    text-align: center;
-    width: 60vw;
-    height: 30vh;
-    padding: 5px;;
+	font-family: "Times New Roman", Times, serif;
+	resize: none;
+	font-size: x-large;
+	text-align: center;
+	width: 60vw;
+	height: 30vh;
+	padding: 5px;
+	border: solid 3px black;
+    background-color: #c3c9cd;
 }
 
 .originInput > input {
-    width: 255px;
-    height: 26px;
-    padding: 5px;
-    font-size: x-large;
+	width: 255px;
+	height: 26px;
+	padding: 5px;
+	font-size: x-large;
+	border: solid 3px black;
+    background-color: #c3c9cd
 }
 
 .cPButton {
-	color: #ffd899;
+	color: #c3c9cd;
 }
 
 .cPButton:hover {
 	cursor: pointer;
-	color: #995e00;
+	color: #c3c9cd;
 }
 
 .cPButton:disabled {
 	text-decoration: line-through;
-	color: #995e00;
+	color: #c3c9cd;
 	cursor: default;
 }

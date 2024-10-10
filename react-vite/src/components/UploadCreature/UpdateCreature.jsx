@@ -74,9 +74,9 @@ export default function UpdateCreature() {
 
 	return (
 		<div>
-			<h1 style={{ color: "#FFC466", textAlign: "center", fontSize: "3rem" }}>Retcon Creature</h1>
+			<h1 style={{ color: "#c3c9cd", textAlign: "center", fontSize: "3rem" }}>Retcon Creature</h1>
 			<form className="creatureForm" onSubmit={handleSubmit}>
-				{errors.name && <p style={{ color: "#FF9F00" }}>{errors.name}</p>}
+				{errors.name && <p style={{ color: "#c3c9cd" }}>{errors.name}</p>}
 				<label className="nameInput">
 					<input
 						type="name"
@@ -89,7 +89,7 @@ export default function UpdateCreature() {
 						maxLength="60"
 					/>
 				</label>
-				{errors.category && <p style={{ color: "#FF9F00" }}>{errors.category}</p>}
+				{errors.category && <p style={{ color: "#c3c9cd" }}>{errors.category}</p>}
 				<label className="categoryInput">
 					<select
 						name="category"
@@ -97,15 +97,27 @@ export default function UpdateCreature() {
 						onChange={(e) => setCategory(e.target.value)}
 						required>
 						<option value="">Please Select a Category</option>
-						<option value="Mythological" selected={category === "Mythological"} >Mythological</option>
-						<option value="Creepypasta" selected={category === "Creepypasta"} >Creepypasta</option>
-						<option value="Cryptid" selected={category === "Cryptid"} >Cryptid</option>
-						<option value="Folklore" selected={category === "Folklore"} >Folklore</option>
-						<option value="SCP" selected={category === "SCP"} >SCP</option>
-						<option value="Other" selected={category === "Other"} >Other</option>
+						<option value="Mythological" selected={category === "Mythological"}>
+							Mythological
+						</option>
+						<option value="Creepypasta" selected={category === "Creepypasta"}>
+							Creepypasta
+						</option>
+						<option value="Cryptid" selected={category === "Cryptid"}>
+							Cryptid
+						</option>
+						<option value="Folklore" selected={category === "Folklore"}>
+							Folklore
+						</option>
+						<option value="SCP" selected={category === "SCP"}>
+							SCP
+						</option>
+						<option value="Other" selected={category === "Other"}>
+							Other
+						</option>
 					</select>
 				</label>
-				{errors.description && <p style={{ color: "#FF9F00" }}>{errors.description}</p>}
+				{errors.description && <p style={{ color: "#c3c9cd" }}>{errors.description}</p>}
 				<label className="descInput">
 					<textarea
 						value={description}
@@ -115,13 +127,14 @@ export default function UpdateCreature() {
 						maxLength="999"
 					/>
 				</label>
-				{errors.origin && <p style={{ color: "#FF9F00" }}>{errors.origin}</p>}
+				{errors.origin && <p style={{ color: "#c3c9cd" }}>{errors.origin}</p>}
 				<label className="originInput">
 					<input
 						required
 						value={origin}
 						onChange={(e) => setOrigin(e.target.value)}
 						placeholder="Origin"
+						maxLength="75"
 					/>
 				</label>
 				<button

@@ -6,7 +6,7 @@
 
 .cButton:hover {
 	text-decoration: underline;
-	color: #995e00;
+	color: #c3c9cd;
 }
 
 .marble {
@@ -15,21 +15,21 @@
 	text-overflow: clip;
 	margin: 50px;
 	padding: 5px 15px 15px 15px;
-	background: #ffd899e3;
-	border: 2px solid #ffd899e3;
+	background: #c3c9cd;
+	border: 5px solid black;
 	border-radius: 5px;
 	font-family: "Times New Roman", Times, serif;
 }
 
 .marbleModal {
 	background: #001433;
-	color: #ffd899;
+	color: #c3c9cd;
 	padding: 50px;
 	padding-top: 0;
 	height: 85vh;
 	width: 80vw;
 	font-size: 2em;
-	border: 2px solid #995e00;
+	border: 5px solid black;
 }
 
 .marbleAuthor {

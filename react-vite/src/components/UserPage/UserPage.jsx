@@ -4,8 +4,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getUser } from "../../redux/user";
 import { getSavedCreatures } from "../../redux/creature";
 import Saved from "./Saved";
-import "./UserPage.css";
 import { SyncLoader } from "react-spinners";
+import "./UserPage.css";
 
 export default function UserPage() {
 	const dispatch = useDispatch();
@@ -33,11 +33,16 @@ export default function UserPage() {
 	}, [dispatch, id, isLoading]);
 
 	if (!isLoading) {
-		return <h1 style={{ textAlign: "center", fontSize: "3rem" }}>Calling Zookeeper<SyncLoader/></h1>;
+		return (
+			<h1 style={{ textAlign: "center", fontSize: "3rem", color: "#c3c9cd" }}>
+				Calling Zookeeper
+				<SyncLoader color="#c3c9cd" />
+			</h1>
+		);
 	}
 
 	if (!user && isLoading) {
-		return <h1 style={{ textAlign: "center", fontSize: "3rem" }}>Zookeeper Not Found</h1>;
+		return <h1 style={{ textAlign: "center", fontSize: "3rem", color: "#c3c9cd" }}>Zookeeper Not Found</h1>;
 	}
 
 	const lore = Object.values(user.lore);
@@ -48,12 +53,17 @@ export default function UserPage() {
 			<div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
 				<div className="userCircle">{user.username[0]}</div>
 				<div style={{ display: "flex" }}>
-					<h1 style={{ fontSize: "3rem", marginTop: "0" }}>{user.username}</h1>
+					<h1 style={{ fontSize: "3rem", marginTop: "0", color: "#c3c9cd" }}>{user.username}</h1>
 					<div>
 						<Saved saved={saved} />
 					</div>
 				</div>
 			</div>
+			{!lore.length && (
+				<h1 style={{ textAlign: "center", fontSize: "3rem", color: "#c3c9cd" }}>
+					No Marbles Posted
+				</h1>
+			)}
 			<div className="marbleContainer">
 				{lore &&
 					lore.map((marble) => {
