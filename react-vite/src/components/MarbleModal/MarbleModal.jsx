@@ -145,25 +145,6 @@ function MarbleModal({ marbleId }) {
 			<div className="marbleStory">
 				<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{marble.story}</p>
 			</div>
-			{sessionUser && (
-				<button
-					className="cButton"
-					style={{
-						fontSize: "2rem",
-						cursor: "pointer",
-						background: "none",
-						border: "none",
-						color: "#c3c9cd",
-						width: "100%",
-					}}
-					onClick={(e) => {
-						e.preventDefault();
-						nav(`creature/${marble.creatureId}/lore`);
-						closeModal();
-					}}>
-					Add Some Lore
-				</button>
-			)}
 		</div>
 	);
 }
