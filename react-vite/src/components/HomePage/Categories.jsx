@@ -31,7 +31,7 @@ export default function Categories() {
 	return (
 		<>
 			<button style={{ background: "none", border: "none", width: "100px" }} onClick={toggleMenu}>
-				<MdArrowDropDown style={{ height: "40px", width: "40px", cursor: "pointer" }} />
+				<MdArrowDropDown style={{ height: "40px", width: "40px", cursor: "pointer", color: "c3c9cd" }} />
 			</button>
 			{showMenu && (
 				<ul className={"categories"} ref={ulRef}>

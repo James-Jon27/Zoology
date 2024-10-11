@@ -1,7 +1,11 @@
 html,
 body {
 	margin: 0;
-	background-color: #0f0f81;
+	background-color: #060018;
+}
+
+script {
+	z-index: 1
 }
 
 li {
@@ -28,7 +32,7 @@ li {
 	flex-direction: column;
 	align-items: center;
 	color: #c3c9cd;
-	background: #001433;
+	background: #1a0d3f;
 }
 
 .profile-dropdown {
