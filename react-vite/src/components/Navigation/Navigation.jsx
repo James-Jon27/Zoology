@@ -4,7 +4,6 @@ import logo from "../../../dist/zoology-removebg-preview.png";
 import "./Navigation.css";
 
 function Navigation() {
-
 	return (
 		<div>
 			<ul
