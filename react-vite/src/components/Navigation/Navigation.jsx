@@ -1,20 +1,9 @@
 import { NavLink } from "react-router-dom";
 import ProfileButton from "./ProfileButton";
 import logo from "../../../dist/zoology-removebg-preview.png";
-import { useEffect } from "react";
 import "./Navigation.css";
 
 function Navigation() {
-	useEffect(() => {
-		const footy = document.createElement("script");
-		footy.src = "https://chatbolt.ai/widget/4f9b703c-cd93-4051-a560-fd063ac6be57.js";
-		footy.async = true;
-		document.body.appendChild(footy);
-
-		return () => {
-			document.body.removeChild(footy);
-		};
-	}, []);
 
 	return (
 		<div>
