@@ -63,3 +63,8 @@
 	color: #c3c9cd;
 	cursor: default;
 }
+
+.upload:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}

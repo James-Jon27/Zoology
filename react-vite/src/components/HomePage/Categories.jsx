@@ -34,52 +34,59 @@ export default function Categories() {
 				<MdArrowDropDown style={{ height: "40px", width: "40px", cursor: "pointer", color: "c3c9cd" }} />
 			</button>
 			{showMenu && (
-				<ul className={"categories"} ref={ulRef}>
+				<ul className="categories" ref={ulRef}>
 					<h1 style={{ margin: "0" }}>Categories</h1>
 					<li
-						style={{ cursor: "pointer", fontSize: "1rem", padding: "5px" }}
+						className="category-item"
+						style={{ cursor: "pointer", textDecoration: "underline", fontSize: "1rem", padding: "5px" }}
 						onClick={(e) => {
 							e.preventDefault(), nav(`/`), closeMenu();
 						}}>
 						All
 					</li>
 					<li
-						style={{ cursor: "pointer", fontSize: "1rem", padding: "5px" }}
+						className="category-item"
+						style={{ cursor: "pointer", textDecoration: "underline", fontSize: "1rem", padding: "5px" }}
 						onClick={(e) => {
 							e.preventDefault(), nav(`/Mythological`), closeMenu();
 						}}>
 						Mythological
 					</li>
 					<li
-						style={{ cursor: "pointer", fontSize: "1rem", padding: "5px" }}
+						className="category-item"
+						style={{ cursor: "pointer", textDecoration: "underline", fontSize: "1rem", padding: "5px" }}
 						onClick={(e) => {
 							e.preventDefault(), nav(`/Creepypasta`), closeMenu();
 						}}>
 						Creepypasta
 					</li>
 					<li
-						style={{ cursor: "pointer", fontSize: "1rem", padding: "5px" }}
+						className="category-item"
+						style={{ cursor: "pointer", textDecoration: "underline", fontSize: "1rem", padding: "5px" }}
 						onClick={(e) => {
 							e.preventDefault(), nav(`/Cryptid`), closeMenu();
 						}}>
 						Cryptid
 					</li>
 					<li
-						style={{ cursor: "pointer", fontSize: "1rem", padding: "5px" }}
+						className="category-item"
+						style={{ cursor: "pointer", textDecoration: "underline", fontSize: "1rem", padding: "5px" }}
 						onClick={(e) => {
 							e.preventDefault(), nav(`/SCP`), closeMenu();
 						}}>
 						SCP
 					</li>
 					<li
-						style={{ cursor: "pointer", fontSize: "1rem", padding: "5px" }}
+						className="category-item"
+						style={{ cursor: "pointer", textDecoration: "underline", fontSize: "1rem", padding: "5px" }}
 						onClick={(e) => {
 							e.preventDefault(), nav(`/Folklore`), closeMenu();
 						}}>
 						Folklore
 					</li>
 					<li
-						style={{ cursor: "pointer", fontSize: "1rem", padding: "5px" }}
+						className="category-item"
+						style={{ cursor: "pointer", textDecoration: "underline", fontSize: "1rem", padding: "5px" }}
 						onClick={(e) => {
 							e.preventDefault(), nav(`/Other`), closeMenu();
 						}}>

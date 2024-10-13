@@ -132,13 +132,13 @@ function MarbleModal({ marbleId }) {
 			<div className="marbleAuthor">
 				<div id="author">
 					<h1 style={{ marginTop: "5px", marginBottom: "0" }}>{marble.title}</h1>
-					<h6
-						style={{ marginTop: "5px", marginBottom: "0", cursor: "pointer" }}
+					<p
+						style={{ marginTop: "5px", marginBottom: "0", cursor: "pointer", fontWeight: "bold", textDecoration: "underline" }}
 						onClick={() => {
 							nav(`/user/${marble.user.id}`), closeModal();
 						}}>
 						By {marble.user.username}
-					</h6>
+					</p>
 				</div>
 				<div>{sessionUser && sessionUser.id == marble.userId && deleteSafety(confirmDelete)}</div>
 			</div>

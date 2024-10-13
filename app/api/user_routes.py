@@ -26,14 +26,29 @@ def user(id):
     return user.to_dict()
 
 
-@user_routes.route("/<int:id>/creatures")
+@user_routes.route("/<int:id>/saves")
 def userSaves(id):
     """
-    Query for a user by id and returns that user in a dictionary
+    Query for a user by id and returns that users saved creatures
     """
     user = User.query.get(id)
     user.to_dict()
     creatures = user.saved
     return {
         "creatures": {creature.id: creature.to_dict_basic() for creature in creatures}
+   }
+
+
+@user_routes.route("/<int:id>/creatures")
+def userCreatures(id):
+    """
+    Query for a user by id and returns that users posted creatures
+    """
+    user = User.query.get(id)
+    user.to_dict()
+    creatures = user.creatures
+    return {
+        "creatures": {creature.id: creature.to_dict_basic() for creature in creatures}
     }
+
+

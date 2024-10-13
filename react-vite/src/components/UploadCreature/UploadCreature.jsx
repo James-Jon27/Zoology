@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addACreature } from "../../redux/creature";
-import "./UploadCreature.css";
 import { RingLoader } from "react-spinners";
+import "./UploadCreature.css";
 
 export default function UploadCreature() {
 	const dispatch = useDispatch();
@@ -13,6 +13,7 @@ export default function UploadCreature() {
 	const [description, setDescription] = useState("");
 	const [origin, setOrigin] = useState("");
 	const [image, setImage] = useState();
+	const [preview, setPreview] = useState(null)
 	const [isLoading, setLoading] = useState(false);
 	const [errors, setErrors] = useState({});
 	const sessionUser = useSelector((state) => state.session.user);
@@ -37,6 +38,13 @@ export default function UploadCreature() {
 			nav(`/creature/${res.id}`);
 		}
 	};
+
+	const handlePreview = (e) => {
+		const file = e.target.files[0]
+		if(file) {
+			setPreview(URL.createObjectURL(file))
+		}
+	}
 
 	const disabled = () => {
 		if (
@@ -108,11 +116,14 @@ export default function UploadCreature() {
 				{errors.image && <p style={{ color: "#c3c9cd" }}>{errors.image}</p>}
 				<label className="imageInput">
 					<input
-						onChange={(e) => setImage(e.target.files[0])}
+						onChange={(e) => {setImage(e.target.files[0]), handlePreview(e)}}
 						type="file"
 						accept="image/*"
+						style={{ display: "none" }}
 						required
 					/>
+					<h3 className="upload" style={{color: "#c3c9cd",textAlign: "center"}}>Upload Image</h3>
+					{preview && <img style={{height: "200px", backgroundColor: "#c3c9cd"}} src={preview} alt="Preview"/>}
 				</label>
 				<button
 					className="cPButton"
@@ -127,7 +138,7 @@ export default function UploadCreature() {
 					type="submit">
 					Add to the Zoo
 				</button>
-				{isLoading && <RingLoader />}
+				{isLoading && <RingLoader color="#c3c9cd"/>}
 			</form>
 		</div>
 	);

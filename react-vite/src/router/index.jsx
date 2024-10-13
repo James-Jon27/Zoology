@@ -8,6 +8,7 @@ import UploadCreature from "../components/UploadCreature";
 import UpdateCreature from "../components/UploadCreature/UpdateCreature";
 import UserPage from "../components/UserPage";
 
+
 export const router = createBrowserRouter([
 	{
 		element: <Layout />,
@@ -47,7 +48,7 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: "*",
-				element: <h1 style={{ textAlign: "center", fontSize: "6rem" }}>Page Not Found :/</h1>,
+				element: <h1 style={{ color: "#c3c9cd", textAlign: "center", fontSize: "6rem" }}>Page Not Found :/</h1>,
 			},
 		],
 	},

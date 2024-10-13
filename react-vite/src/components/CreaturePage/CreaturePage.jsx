@@ -87,7 +87,9 @@ export default function CreaturePage() {
 	const savingCreature = (bool) => {
 		if (saving) {
 			return (
-				<div className="saving" style={{display: "flex", gap: "5px", alignItems: "center", color: "#c3c9cd"}}>
+				<div
+					className="saving"
+					style={{ display: "flex", gap: "5px", alignItems: "center", color: "#c3c9cd" }}>
 					<BounceLoader size="30px" /> Saving...
 				</div>
 			);
@@ -105,11 +107,14 @@ export default function CreaturePage() {
 			);
 		} else if (bool) {
 			return (
-				<div className="saving" style={{ display: "flex", gap: "5px", alignItems: "center", color: "#c3c9cd" }}>
+				<div
+					className="saving"
+					style={{ display: "flex", gap: "5px", alignItems: "center", color: "#c3c9cd" }}>
 					<CiCircleMinus
 						onClick={unsave}
 						style={{ height: "35px", width: "35px", padding: "0", margin: "0", color: "#c3c9cd" }}
-					/> Remove
+					/>{" "}
+					Remove
 				</div>
 			);
 		}
@@ -190,7 +195,7 @@ export default function CreaturePage() {
 			{sessionUser && savingCreature(saved())}
 			<div className="creatureInfo">
 				<div className="creatureImage">
-					<img src={creature.image} alt={creature.name} />
+					<img style={{backgroundColor: "#c3c9cd"}}src={creature.image} alt={creature.name} />
 				</div>
 				<div className="creatureData">
 					<div>
