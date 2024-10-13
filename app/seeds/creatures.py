@@ -193,7 +193,24 @@ scp_682 = Creature(
     saves=[saul],
 )
 
+thunderbird = Creature(
+    user=jimmy,
+    name="Thunderbird",
+    image="https://i.pinimg.com/originals/c5/3c/03/c53c03f8dee57461def2db723fde0434.jpg",
+    category="Folklore",
+    origin="North America",
+    description="The Thunderbird is a large bird-like spirit in North American indigenous peoples' history. The thunderbird is said to create thunder by flapping its wings and lightning by flashing its eyes, according to Algonquian and Iroquois traditions. Across different cultures, thunderbirds are typically depicted as birds of prey or as hybrids of humans and birds. They are often seen as protectors, sometimes intervening on behalf of people, but they expect veneration, prayers, and gifts in return.",
+    saves=[saul, demo]
+)
 
+unicorn = Creature(
+    user=saul,
+    name="Unicorn",
+    image="https://i.etsystatic.com/38122924/r/il/38c679/4388307738/il_1080xN.4388307738_2l6o.jpg",
+    category="Other",
+    origin="Unknown",
+    description="In mythology, a unicorn is simply an animal with a single horn. This single horn is supposed to be on the midline of the body, such as the center of the forehead, and it needs to have grown there naturally. Nearly everyone agrees that a two-horned animal with one horn that broke off or failed to grow is not a unicorn.",
+)
 
 def seed_creatures():
     creatures = [
@@ -217,6 +234,7 @@ def seed_creatures():
         wendigo,
         chupacabra,
         bigfoot,
+        thunderbird
     ]
 
     for creature in creatures:
