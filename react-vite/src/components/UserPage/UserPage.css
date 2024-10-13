@@ -14,7 +14,12 @@
 }
 
 .saved-creatures::-webkit-scrollbar {
-    display: none;
+	width: 13px;
+}
+
+.saved-creatures::-webkit-scrollbar-thumb {
+	background-color: #1a0d3f;
+	border: solid 3px #868686;
 }
 
 .userCircle {

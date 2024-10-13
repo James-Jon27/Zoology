@@ -48,16 +48,13 @@ export default function HomePage() {
 						</h1>
 						<Categories />
 					</div>
-					<div id="liner" style={{ overflowY: "scroll", height: "75vh" }}>
+					<div id="liner" style={{ overflowY: "scroll", height: "70vh" }}>
 						{creatures &&
 							creatures
 								.filter((creature) => creature.category === category)
 								.map((creature) => {
 									return (
 										<NavLink to={`/creature/${creature.id}`} key={creature.id} className="creature">
-											<div className="cImage">
-												<img src={creature.image} alt={`Image of ${creature.name}`} />
-											</div>
 											<div className="cDetails">
 												<h1>{creature.name}</h1>
 												<p style={{ fontSize: "1.7rem" }}>{creature.description}</p>
@@ -67,9 +64,8 @@ export default function HomePage() {
 													onClick={(e) => {
 														e.preventDefault(), nav(`/${creature.category}`);
 													}}>
-													{creature.category}
+													{creature.category}, {creature.origin}
 												</h3>
-												<h3>{creature.origin}</h3>
 											</div>
 										</NavLink>
 									);
@@ -84,14 +80,11 @@ export default function HomePage() {
 						</h1>
 						<Categories />
 					</div>
-					<div id="liner" style={{ overflowY: "scroll", height: "75vh" }}>
+					<div id="liner" style={{ overflowY: "scroll", height: "70vh" }}>
 						{creatures &&
 							creatures.map((creature) => {
 								return (
 									<NavLink to={`/creature/${creature.id}`} key={creature.id} className="creature">
-										<div className="cImage">
-											<img src={creature.image} alt={`Image of ${creature.name}`} />
-										</div>
 										<div className="cDetails">
 											<h1>{creature.name}</h1>
 											<p style={{ fontSize: "1.7rem" }}>{creature.description}</p>
@@ -101,9 +94,8 @@ export default function HomePage() {
 												onClick={(e) => {
 													e.preventDefault(), nav(`/${creature.category}`);
 												}}>
-												{creature.category}
+												{creature.category}, {creature.origin}
 											</h3>
-											<h3>{creature.origin}</h3>
 										</div>
 									</NavLink>
 								);
