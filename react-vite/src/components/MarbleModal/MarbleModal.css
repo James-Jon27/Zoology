@@ -46,7 +46,7 @@
 	margin: 0;
 	margin-top: 20px;
 	overflow-y: scroll;
-	word-break: break-all;
+	word-break: break-word;
 	margin-bottom: 10px;
 	height: 600px;
 }

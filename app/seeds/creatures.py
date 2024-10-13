@@ -194,6 +194,7 @@ scp_682 = Creature(
 )
 
 
+
 def seed_creatures():
     creatures = [
         gryphon,
@@ -215,7 +216,7 @@ def seed_creatures():
         slender_man,
         wendigo,
         chupacabra,
-        bigfoot
+        bigfoot,
     ]
 
     for creature in creatures:
