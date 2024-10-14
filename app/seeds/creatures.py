@@ -1,8 +1,6 @@
-from os import name
 from app.models import db, Creature, environment, SCHEMA
 from app.seeds.users import saul, demo, jimmy
 from sqlalchemy.sql import text
-
 
 gryphon = Creature(
     user=demo,
