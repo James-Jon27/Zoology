@@ -1,0 +1,60 @@
+.creatureInfo {
+	display: flex;
+	justify-content: center;
+}
+
+.creatureManipulation {
+	display: flex;
+	justify-content: center;
+}
+
+.creatureImage {
+	display: flex;
+	align-items: center;
+}
+
+.creatureImage > img {
+	height: 450px;
+	clip-path: xywh(0 1px 100% 100% round 15% 0);
+	border: solid 5px #c3c9cd;
+}
+
+.creatureData {
+	color: #c3c9cd;
+	width: 325px;
+	height: 450px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	text-align: center;
+	margin: 15px;
+	border: solid 5px #c3c9cd;
+}
+
+.desc {
+	overflow-y: scroll;
+}
+
+.desc::-webkit-scrollbar {
+	display: none;
+}
+
+.creatureLore {
+	display: flex;
+	justify-content: center;
+}
+
+.saving {
+	position: fixed;
+	z-index: 1;
+	left: 3%;
+	top: 12%;
+}
+
+.marble {
+	transition:transform .5s ease;
+}
+
+.marble:hover {
+	transform: scale(1.3);
+}

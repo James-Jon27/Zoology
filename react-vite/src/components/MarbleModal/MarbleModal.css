@@ -1,0 +1,66 @@
+.marbleContainer {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(375px, 1fr));
+	padding: 20px;
+}
+
+.cButton:hover {
+	text-decoration: underline;
+	color: #c3c9cd;
+}
+
+.marble {
+	height: 300px;
+	overflow: hidden;
+	text-overflow: clip;
+	margin: 50px;
+	padding: 5px 15px 15px 15px;
+	background: #c3c9cd;
+	border: 5px solid black;
+	border-radius: 5px;
+	font-family: "Times New Roman", Times, serif;
+}
+
+.marbleModal {
+	background: #050020;
+	color: #c3c9cd;
+	padding: 50px;
+	padding-top: 0;
+	height: 85vh;
+	width: 80vw;
+	font-size: 2em;
+	border: 5px solid black;
+}
+
+.marbleAuthor {
+	display: flex;
+	justify-content: space-between;
+}
+
+#author {
+	white-space: nowrap;
+	overflow-x: scroll;
+}
+
+.marbleStory {
+	margin: 0;
+	margin-top: 20px;
+	overflow-y: scroll;
+	word-break: break-word;
+	margin-bottom: 10px;
+	height: 600px;
+}
+
+.marbleStory > p {
+	margin: 0;
+	overflow-y: scroll;
+}
+
+.marbleStory::-webkit-scrollbar,
+#author::-webkit-scrollbar {
+	display: none;
+}
+
+.marbleStory > p::-webkit-scrollbar {
+	display: none;
+}

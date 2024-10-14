@@ -1,0 +1,53 @@
+html,
+body {
+	margin: 0;
+	background-color: #060018;
+}
+
+script {
+	z-index: 1;
+}
+
+li {
+	list-style: none;
+}
+
+.navbar {
+	align-items: center;
+	background: #c3c9cd;
+	border-bottom: solid 5px black;
+	margin-left: 50px;
+	margin-right: 50px;
+}
+
+.profModal {
+	font-weight: bolder;
+	font-size: 1.5rem;
+}
+
+.userIn {
+	width: fit-content;
+	display: flex;
+	padding: 10px;
+	flex-direction: column;
+	align-items: center;
+	color: #c3c9cd;
+	background: #1a0d3f;
+}
+
+.profile-dropdown {
+	position: absolute;
+	top: 85px;
+	right: 5px;
+}
+
+.profButt {
+	color: white;
+
+	background-color: transparent;
+}
+
+.profButt:hover {
+	background-color: #c3c9cd;
+	color: #060018;
+}
