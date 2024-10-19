@@ -24,7 +24,7 @@ Welcom to **Zoology**, a project that provides a space to view and interact with
 
 Zoology is an app that was created to allow users to find and create information on odd creatures and entities found across the world.
 
-![](MVP/zoommvp1.1.png)
+![](/MVP/zoommvp1.1.png)
 
 When clicking on the user button at the top right, you have the otpion to log in or sign up to make an account. 
 
