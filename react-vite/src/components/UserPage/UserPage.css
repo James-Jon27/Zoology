@@ -35,3 +35,15 @@
 	color: #c3c9cd;
 	font-size: 100px;
 }
+
+.cDetailsU {
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	font-size: larger;
+	overflow-y: hidden;
+}
+
+.cDetailsU > p::-webkit-scrollbar {
+	display: none;
+}

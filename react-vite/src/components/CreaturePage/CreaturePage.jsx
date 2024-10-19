@@ -64,7 +64,7 @@ export default function CreaturePage() {
 		}
 		return sessionUser.saved.some((creature) => creature.id == id);
 	};
-	console.log(saved());
+
 
 	const save = async (e) => {
 		e.preventDefault();
