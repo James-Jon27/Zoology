@@ -51,3 +51,18 @@ li {
 	background-color: #c3c9cd;
 	color: #060018;
 }
+
+.footer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #6833f8;
+	border-top: solid 5px black;
+	padding: 5px;
+	gap: 12px;
+}
+
+.footer > NavLink {
+	color: #c3c9cd;
+	text-decoration: none;
+}

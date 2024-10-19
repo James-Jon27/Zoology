@@ -48,7 +48,7 @@ export default function HomePage() {
 						</h1>
 						<Categories />
 					</div>
-					<div id="liner" style={{ overflowY: "scroll", height: "70vh" }}>
+					<div id="liner" style={{ overflowY: "scroll", height: "66.7vh" }}>
 						{creatures &&
 							creatures
 								.filter((creature) => creature.category === category)
@@ -81,7 +81,7 @@ export default function HomePage() {
 						</h1>
 						<Categories />
 					</div>
-					<div id="liner" style={{ overflowY: "scroll", height: "70vh" }}>
+					<div id="liner" style={{ overflowY: "scroll", height: "66.7vh" }}>
 						{creatures &&
 							creatures.reverse().map((creature) => {
 								return (
