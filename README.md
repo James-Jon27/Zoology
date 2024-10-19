@@ -55,9 +55,6 @@ On any creature or marble that you hae posted there will be buttons for editing 
 ![](MVP/zoomvp3.4.png) ![](MVP/zoomvp3.41.png)
 
 
-## Flask React Project
-
-This is the starter for the Flask React project.
 
 ## Getting started
 
