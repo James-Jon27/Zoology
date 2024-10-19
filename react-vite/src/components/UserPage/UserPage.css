@@ -42,6 +42,21 @@
 	align-content: center;
 	font-size: larger;
 	overflow-y: hidden;
+	width: 475px;
+	height: 475px;
+}
+
+.cDetailsU > h1 {
+	margin-bottom: 12px;
+}
+
+.cDetailsU > div {
+	padding: 12px;
+	overflow: hidden;
+}
+
+.cDetailsU > div >img {
+	width: 425px;
 }
 
 .cDetailsU > p::-webkit-scrollbar {
