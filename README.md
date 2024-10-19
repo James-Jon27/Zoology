@@ -24,35 +24,35 @@ Welcom to **Zoology**, a project that provides a space to view and interact with
 
 Zoology is an app that was created to allow users to find and create information on odd creatures and entities found across the world.
 
-![](/MVP/zoommvp1.1.png)
+![](/MVP/zoomvp1.1.png)
 
 When clicking on the user button at the top right, you have the otpion to log in or sign up to make an account. 
 
-![](MVP/zoommvp1.2.png)
+![](MVP/zoomvp1.2.png)
 
 After signing up you will be taken to your user page, where you will see every marble (page of lore) you have added, that are links to the creatures they are about. Clicking the user button again will give the user interactions menu where you can create a new creature or log out.
 
-![](MVP/zoommvp1.4.png) ![](MVP/zoommvp1.3.png)
+![](MVP/zoomvp1.4.png) ![](MVP/zoomvp1.3.png)
 
 Circling back to the homepage, clicking on any creature and it's description will take you to that creatures page. There, as a logged in user, you will have the option to save the creature to your personal zoo or add more marbles. Clicking any existng marble will open the page for further reading.
 
-![](MVP/zoommvp2.1.png) ![](MVP/zoommvp2.2.png) ![](MVP/zoommvp2.3.png)
+![](MVP/zoomvp2.1.png) ![](MVP/zoomvp2.2.png) ![](MVP/zoomvp2.3.png)
 
 Writing a page of lore is simple. Click the "Add Some Lore" button that with take you to the page to write the story about the creature and whatever you know to fill in information blindspots for other zookeepers.
 
-![](MVP/zoommvp3.2.png) ![](MVP/zoommvp3.3.png)
+![](MVP/zoomvp3.2.png) ![](MVP/zoomvp3.3.png)
 
 When posted you'll see your new page appear on the creature's page ready to be viewed!
 
-![](MVP/zoommvp3.31.png)
+![](MVP/zoomvp3.31.png)
 
 Creating a creature is also just as simple, from the user interaction page there is a button that will take you to the creation page, where you fil out the required information.
 
-![](MVP/zoommvp3.11.png)
+![](MVP/zoomvp3.11.jpg)
 
 On any creature or marble that you hae posted there will be buttons for editing and deleting. When deleting you will be presented with a confirmation option.
 
-![](MVP/zoommvp3.4png) ![](MVP/zoommvp3.41.png)
+![](MVP/zoomvp3.4.png) ![](MVP/zoomvp3.41.png)
 
 
 ## Flask React Project
