@@ -52,6 +52,7 @@ export default function HomePage() {
 						{creatures &&
 							creatures
 								.filter((creature) => creature.category === category)
+								.reverse()
 								.map((creature) => {
 									return (
 										<NavLink to={`/creature/${creature.id}`} key={creature.id} className="creature">
@@ -82,7 +83,7 @@ export default function HomePage() {
 					</div>
 					<div id="liner" style={{ overflowY: "scroll", height: "70vh" }}>
 						{creatures &&
-							creatures.map((creature) => {
+							creatures.reverse().map((creature) => {
 								return (
 									<NavLink to={`/creature/${creature.id}`} key={creature.id} className="creature">
 										<div className="cDetails">
