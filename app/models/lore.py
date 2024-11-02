@@ -16,7 +16,7 @@ class Lore(db.Model):
         db.Integer, db.ForeignKey(add_prefix_for_prod("creatures.id")), nullable=False
     )
     title = db.Column(db.String(50), nullable=False)
-    story = db.Column(db.Text(15000), nullable=False)
+    story = db.Column(db.Text, nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.now)
     updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)
 
